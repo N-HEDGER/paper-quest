@@ -1,7 +1,9 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import base64
+import requests
 from pathlib import Path
+from streamlit_agraph import agraph, Node, Edge, Config
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -20,6 +22,8 @@ WEEKS = [
                 "title": "fMRI activation of the fusiform gyrus and amygdala to cartoon characters but not to faces in a boy with autism",
                 "authors": "Grelotti et al. (2005)",
                 "journal": "Neuropsychologia",
+                "doi": "10.1016/j.neuropsychologia.2004.06.015",
+                "openalex_id": "W2105251885",
                 "file": str(BASE / "papers" / "Paper1.pdf"),
                 "embed_url": "https://drive.google.com/file/d/1_S0olC5KXR6ONap-0wilcw5pezgtBAUM/preview",
                 "mcqs": [
@@ -55,6 +59,8 @@ WEEKS = [
                 "title": "Local functional overconnectivity in posterior brain regions is associated with symptom severity in autism spectrum disorders",
                 "authors": "Keown et al. (2013)",
                 "journal": "Cell Reports",
+                "doi": "10.1016/j.celrep.2013.10.003",
+                "openalex_id": "W2137784786",
                 "file": str(BASE / "papers" / "Paper2.pdf"),
                 "embed_url": "https://drive.google.com/file/d/1iKpb6pnbW8XPs_mWOxYwQBltwZ-6CmZM/preview",
                 "mcqs": [
@@ -404,6 +410,236 @@ def _img_to_base64(path: Path) -> str:
     return base64.b64encode(path.read_bytes()).decode()
 
 
+@st.cache_data(ttl=3600, show_spinner=False)
+def _fetch_citation_network(openalex_id: str, max_citing: int = 15, max_refs: int = 10):
+    base = "https://api.openalex.org/works"
+    headers = {"Accept": "application/json"}
+
+    citing = requests.get(
+        base,
+        params={
+            "filter": f"cites:{openalex_id}",
+            "per_page": max_citing,
+            "sort": "cited_by_count:desc",
+            "select": "id,doi,title,publication_year,authorships,cited_by_count",
+        },
+        headers=headers,
+        timeout=10,
+    ).json().get("results", [])
+
+    center_data = requests.get(
+        f"{base}/{openalex_id}",
+        params={"select": "id,doi,title,publication_year,authorships,cited_by_count,referenced_works"},
+        headers=headers,
+        timeout=10,
+    ).json()
+
+    ref_ids = center_data.get("referenced_works", [])[:max_refs]
+    refs = []
+    if ref_ids:
+        id_filter = "|".join(r.split("/")[-1] for r in ref_ids)
+        refs = requests.get(
+            base,
+            params={
+                "filter": f"openalex:{id_filter}",
+                "per_page": max_refs,
+                "select": "id,doi,title,publication_year,authorships,cited_by_count",
+            },
+            headers=headers,
+            timeout=10,
+        ).json().get("results", [])
+
+    return center_data, citing, refs
+
+
+def _first_author(work: dict) -> str:
+    authorships = work.get("authorships", [])
+    if authorships:
+        return authorships[0].get("author", {}).get("display_name", "Unknown")
+    return "Unknown"
+
+
+def _short_label(work: dict, max_len: int = 25) -> str:
+    title = work.get("title", "Untitled") or "Untitled"
+    if len(title) > max_len:
+        title = title[:max_len - 1] + "…"
+    return title
+
+
+def _doi_url(work: dict) -> str:
+    doi = work.get("doi")
+    if doi:
+        return doi if doi.startswith("http") else f"https://doi.org/{doi}"
+    return ""
+
+
+def _render_citation_network(paper: dict):
+    openalex_id = paper.get("openalex_id")
+    if not openalex_id:
+        st.info("No citation data available for this paper.")
+        return
+
+    with st.spinner("Fetching citation network from OpenAlex..."):
+        try:
+            center, citing, refs = _fetch_citation_network(openalex_id)
+        except Exception:
+            st.error("Could not fetch citation data. Please try again later.")
+            return
+
+    import math
+
+    nodes = []
+    edges = []
+    node_lookup = {}
+    cx, cy = 350, 250
+    radius = 180
+
+    node_lookup[openalex_id] = center
+    nodes.append(Node(
+        id=openalex_id,
+        label=_short_label(center),
+        title=center.get("title", ""),
+        size=35,
+        color="#a855f7",
+        font={"color": "#e0e4ff", "size": 11, "strokeWidth": 3, "strokeColor": "#0a0e27"},
+        shape="dot",
+        x=cx,
+        y=cy,
+    ))
+
+    n_citing = len(citing)
+    for i, work in enumerate(citing):
+        wid = work["id"].split("/")[-1]
+        node_lookup[wid] = work
+        angle = math.pi + (math.pi / (n_citing + 1)) * (i + 1)
+        nodes.append(Node(
+            id=wid,
+            label=_short_label(work),
+            title=work.get("title", ""),
+            size=20,
+            color="#6482ff",
+            font={"color": "#8fa4ff", "size": 9, "strokeWidth": 2, "strokeColor": "#0a0e27"},
+            shape="dot",
+            x=int(cx + radius * math.cos(angle)),
+            y=int(cy + radius * math.sin(angle)),
+        ))
+        edges.append(Edge(
+            source=wid, target=openalex_id,
+            color="rgba(100,130,255,0.4)",
+            width=1.5,
+        ))
+
+    n_refs = len(refs)
+    ref_idx = 0
+    for work in refs:
+        wid = work["id"].split("/")[-1]
+        node_lookup[wid] = work
+        if not any(n.id == wid for n in nodes):
+            angle = (math.pi / (n_refs + 1)) * (ref_idx + 1)
+            nodes.append(Node(
+                id=wid,
+                label=_short_label(work),
+                title=work.get("title", ""),
+                size=20,
+                color="#50c878",
+                font={"color": "#50c878", "size": 9, "strokeWidth": 2, "strokeColor": "#0a0e27"},
+                shape="dot",
+                x=int(cx + radius * math.cos(angle)),
+                y=int(cy + radius * math.sin(angle)),
+            ))
+            ref_idx += 1
+        edges.append(Edge(
+            source=openalex_id, target=wid,
+            color="rgba(80,200,120,0.4)",
+            width=1.5,
+        ))
+
+    config = Config(
+        width=700,
+        height=500,
+        directed=True,
+        physics=False,
+        hierarchical=False,
+        nodeHighlightBehavior=True,
+        highlightColor="#ffb432",
+        collapsible=False,
+        node={"labelProperty": "label"},
+        link={"renderLabel": False},
+        backgroundColor="rgba(0,0,0,0)",
+    )
+
+    st.markdown(
+        '<p style="font-size:0.8rem; color:rgba(180,190,220,0.6);">'
+        '<span style="color:#a855f7;">●</span> This paper &nbsp; '
+        '<span style="color:#6482ff;">●</span> Cited by &nbsp; '
+        '<span style="color:#50c878;">●</span> References &nbsp; '
+        '<span style="font-style:italic;">Click a node to see details</span>'
+        '</p>',
+        unsafe_allow_html=True,
+    )
+
+    selected_node = agraph(nodes=nodes, edges=edges, config=config)
+
+    if selected_node and selected_node in node_lookup:
+        work = node_lookup[selected_node]
+        doi_link = _doi_url(work)
+        title = work.get("title", "Untitled") or "Untitled"
+        author = _first_author(work)
+        year = work.get("publication_year", "—")
+        cites = work.get("cited_by_count", 0)
+        st.markdown(
+            f'<div style="padding:1rem; margin:0.5rem 0; border-radius:8px; '
+            f'background:rgba(100,130,255,0.08); border:1px solid rgba(100,130,255,0.2);">'
+            f'<strong style="color:#e0e4ff;">{title}</strong><br>'
+            f'<span style="font-size:0.85rem; color:rgba(180,190,220,0.7);">'
+            f'{author} · {year} · {cites} citations</span><br>',
+            unsafe_allow_html=True,
+        )
+        if doi_link:
+            st.markdown(f"[Open paper ↗]({doi_link})")
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    # --- Tabbed paper lists ---
+    def _render_paper_list(works):
+        works_sorted = sorted(works, key=lambda w: w.get("cited_by_count", 0), reverse=True)
+        for w in works_sorted:
+            doi_link = _doi_url(w)
+            title = w.get("title", "Untitled") or "Untitled"
+            author = _first_author(w)
+            year = w.get("publication_year", "—")
+            cites = w.get("cited_by_count", 0)
+            if doi_link:
+                st.markdown(
+                    f'<div style="padding:0.5rem 0; border-bottom:1px solid rgba(100,120,255,0.1);">'
+                    f'<a href="{doi_link}" target="_blank" style="color:#8fa4ff; text-decoration:none; font-weight:500;">{title}</a>'
+                    f'<br><span style="font-size:0.8rem; color:rgba(180,190,220,0.6);">{author} · {year} · {cites} citations</span>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    f'<div style="padding:0.5rem 0; border-bottom:1px solid rgba(100,120,255,0.1);">'
+                    f'<span style="color:#e0e4ff; font-weight:500;">{title}</span>'
+                    f'<br><span style="font-size:0.8rem; color:rgba(180,190,220,0.6);">{author} · {year} · {cites} citations</span>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+    tab_cited, tab_refs = st.tabs(["Cited by", "References"])
+    with tab_cited:
+        if citing:
+            st.caption(f"{len(citing)} papers that cite this work (showing top by citation count)")
+            _render_paper_list(citing)
+        else:
+            st.info("No citing papers found.")
+    with tab_refs:
+        if refs:
+            st.caption(f"{len(refs)} references from this paper")
+            _render_paper_list(refs)
+        else:
+            st.info("No references found.")
+
+
 # ---------------------------------------------------------------------------
 # UI components
 # ---------------------------------------------------------------------------
@@ -548,6 +784,9 @@ def _render_read_paper(week, paper_index: int, next_stage: int):
         )
     else:
         st.warning("No embedded viewer available for this paper.")
+
+    with st.expander("🔬 Explore the citation network"):
+        _render_citation_network(paper)
 
     st.markdown("")
     col1, col2, col3 = st.columns([1, 2, 1])
