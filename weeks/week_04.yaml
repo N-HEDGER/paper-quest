@@ -1,0 +1,57 @@
+week_number: 4
+title: "Week 4"
+subtitle: "Week 4 — Neural Mechanisms in Autism Spectrum Disorders"
+
+podcast:
+  embed_url: "https://drive.google.com/file/d/1n4eMaoQr7eYWtu7T-tr4Mm7r3jsexHah/preview"
+
+papers:
+  - title: "fMRI activation of the fusiform gyrus and amygdala to cartoon characters but not to faces in a boy with autism"
+    authors: "Grelotti et al. (2005)"
+    journal: "Neuropsychologia"
+    doi: "10.1016/j.neuropsychologia.2004.06.015"
+    openalex_id: "W2105251885"
+    embed_url: "https://drive.google.com/file/d/1_S0olC5KXR6ONap-0wilcw5pezgtBAUM/preview"
+    mcqs:
+      - question: "Which brain region is primarily associated with face processing in typically developing individuals?"
+        options:
+          - "Hippocampus"
+          - "Fusiform gyrus"
+          - "Prefrontal cortex"
+          - "Cerebellum"
+        answer: 1
+      - question: "What type of stimuli did the boy with autism show greater fusiform activation for, compared to faces?"
+        options:
+          - "Animals"
+          - "Landscapes"
+          - "Cartoon characters"
+          - "Geometric shapes"
+        answer: 2
+    short_answers:
+      - question: "What does this case study suggest about the role of expertise and interest in fusiform gyrus activation?"
+        model_answer: "The study suggests that fusiform gyrus activation may be driven by individual expertise and personal interest rather than being face-specific — the boy's intense interest in cartoon characters led to fusiform activation for those stimuli instead of faces."
+
+  - title: "Local functional overconnectivity in posterior brain regions is associated with symptom severity in autism spectrum disorders"
+    authors: "Keown et al. (2013)"
+    journal: "Cell Reports"
+    doi: "10.1016/j.celrep.2013.10.003"
+    openalex_id: "W2137784786"
+    embed_url: "https://drive.google.com/file/d/1iKpb6pnbW8XPs_mWOxYwQBltwZ-6CmZM/preview"
+    mcqs:
+      - question: "What pattern of functional connectivity did the authors find in posterior brain regions of participants with ASD?"
+        options:
+          - "Underconnectivity"
+          - "No difference from controls"
+          - "Overconnectivity"
+          - "Random connectivity patterns"
+        answer: 2
+      - question: "How did local overconnectivity relate to autism symptom severity?"
+        options:
+          - "No relationship was found"
+          - "Greater overconnectivity was associated with milder symptoms"
+          - "Greater overconnectivity was associated with more severe symptoms"
+          - "The relationship was U-shaped"
+        answer: 2
+    short_answers:
+      - question: "How do the findings of local overconnectivity relate to theories of long-range underconnectivity in autism?"
+        model_answer: "The findings suggest that autism involves both local overconnectivity and long-range underconnectivity — posterior regions are overly connected locally, which may come at the cost of efficient long-range integration, supporting a model where local over-processing and global under-integration coexist."

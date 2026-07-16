@@ -1,0 +1,57 @@
+week_number: 7
+title: "Week 7"
+subtitle: "Week 7 — Mood, Depression and Emotional Processing"
+
+podcast:
+  embed_url: "https://drive.google.com/file/d/1lycVH8LGkFAr4foaDj2pO-dXyJnQ1mdh/preview"
+
+papers:
+  - title: "Relationship of emotional processing to masked faces in the amygdala to mood state and treatment in major depressive disorder"
+    authors: "Victor et al. (2010)"
+    journal: "Archives of General Psychiatry"
+    doi: "10.1001/archgenpsychiatry.2010.144"
+    openalex_id: "W2060926272"
+    embed_url: "https://drive.google.com/file/d/1d4II76m7SSc63fCYRJX0AFkew01plAGe/preview"
+    mcqs:
+      - question: "How did currently-depressed subjects respond to masked sad faces compared to healthy controls?"
+        options:
+          - "Reduced amygdala activation"
+          - "No difference in amygdala activation"
+          - "Greater amygdala activation"
+          - "Greater prefrontal activation instead"
+        answer: 2
+      - question: "What happened to the negative processing bias after SSRI treatment?"
+        options:
+          - "It remained unchanged"
+          - "It worsened"
+          - "It reversed toward the normative (positive) pattern"
+          - "It shifted to a neutral pattern"
+        answer: 2
+    short_answers:
+      - question: "What is the significance of finding mood-congruent processing biases at the unconscious level, and what does this imply about the nature of depression?"
+        model_answer: "Finding that depressed individuals show amygdala biases toward sad faces even when presented below conscious awareness suggests that mood-congruent processing in depression operates at an automatic, pre-attentive level. This implies depression involves fundamental alterations in how the brain filters emotional information, not just conscious rumination, and that these biases may contribute to maintaining the depressive state by automatically prioritising negative social signals."
+
+  - title: "Direct electrical stimulation of lateral orbitofrontal cortex acutely improves mood in individuals with symptoms of depression"
+    authors: "Rao et al. (2018)"
+    journal: "Current Biology"
+    doi: "10.1016/j.cub.2018.10.026"
+    openalex_id: "W2903033387"
+    embed_url: "https://drive.google.com/file/d/1nKnQ-26GoYT8gLRlNFbJPRZzyjqMnKjV/preview"
+    mcqs:
+      - question: "Which brain region was stimulated to produce acute mood improvement?"
+        options:
+          - "Dorsolateral prefrontal cortex"
+          - "Anterior cingulate cortex"
+          - "Lateral orbitofrontal cortex"
+          - "Ventral striatum"
+        answer: 2
+      - question: "In which participants did OFC stimulation improve mood?"
+        options:
+          - "All participants regardless of baseline mood"
+          - "Only those with moderate-to-severe baseline depression"
+          - "Only healthy controls"
+          - "Only those with epilepsy but no depression"
+        answer: 1
+    short_answers:
+      - question: "Why is the lateral OFC considered a promising target for deep brain stimulation in mood disorders, based on this study's findings?"
+        model_answer: "The lateral OFC is promising because stimulation produced dose-dependent mood improvement specifically in depressed patients, suppressed low-frequency neural activity (mirroring natural positive mood states), modulated distributed mood-related circuitry, and importantly did not produce hypomania — suggesting it restores normal mood rather than artificially elevating it. Its role as a hub in mood-related networks makes it well-positioned to broadly influence emotional processing."

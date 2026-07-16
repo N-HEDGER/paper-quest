@@ -1,0 +1,57 @@
+week_number: 9
+title: "Week 9"
+subtitle: "Week 9 — Blindsight and Unconscious Visual Processing"
+
+podcast:
+  embed_url: "https://drive.google.com/file/d/1hSIe4rXhIWTxAsrldYLLw4ptJzCOdhif/preview"
+
+papers:
+  - title: "Intact navigation skills after bilateral loss of striate cortex"
+    authors: "de Gelder et al. (2008)"
+    journal: "Current Biology"
+    doi: "10.1016/j.cub.2008.11.002"
+    openalex_id: "W2101077368"
+    embed_url: "https://drive.google.com/file/d/1O5iNsv4dOn0bcbp3Jac45ZRSPA7suO-z/preview"
+    mcqs:
+      - question: "What was remarkable about patient TN's condition?"
+        options:
+          - "He had unilateral visual cortex damage"
+          - "He had bilateral destruction of primary visual cortex causing clinical blindness"
+          - "He had damage to his frontal lobes"
+          - "He had selective damage to motion-processing areas"
+        answer: 1
+      - question: "What did TN successfully do in the corridor obstacle task?"
+        options:
+          - "He bumped into most obstacles"
+          - "He navigated only when given verbal guidance"
+          - "He skillfully avoided and turned around all obstacles without awareness"
+          - "He used echolocation to navigate"
+        answer: 2
+    short_answers:
+      - question: "What does TN's case tell us about the role of extra-striate visual pathways in humans?"
+        model_answer: "TN's case demonstrates that extra-striate pathways in humans can sustain sophisticated visuo-spatial abilities — including obstacle avoidance during navigation — in the complete absence of functional primary visual cortex and conscious visual experience. This shows that subcortical and alternative cortical visual routes (bypassing V1) can process spatial information sufficiently for complex real-world behaviour, extending what was previously demonstrated mainly in non-human primates."
+
+  - title: "Unseen facial and bodily expressions trigger fast emotional reactions"
+    authors: "Tamietto et al. (2009)"
+    journal: "Proceedings of the National Academy of Sciences"
+    doi: "10.1073/pnas.0908994106"
+    openalex_id: "W1978547286"
+    embed_url: "https://drive.google.com/file/d/1UfsZw68Hlx-Yrd-2kLdsjDkC85E9qhfI/preview"
+    mcqs:
+      - question: "What technique was used to measure participants' automatic facial reactions?"
+        options:
+          - "Self-report questionnaires"
+          - "Video coding of expressions"
+          - "Facial electromyography (EMG)"
+          - "fMRI of motor cortex"
+        answer: 2
+      - question: "How did reaction speed compare between seen and unseen emotional stimuli?"
+        options:
+          - "Seen stimuli produced faster reactions"
+          - "No difference in speed"
+          - "Unseen stimuli produced faster reactions and higher arousal"
+          - "Unseen stimuli produced no reactions at all"
+        answer: 2
+    short_answers:
+      - question: "Why do the authors argue that emotional contagion in these patients reflects affective resonance rather than simple motor mimicry?"
+        model_answer: "Because visually dissimilar stimuli (faces and bodies) produced highly similar expressive responses — patients did not copy the specific motor pattern they saw, but responded to the affective meaning of the expression. If it were mimicry, facial and bodily stimuli should produce different facial reactions reflecting their different visual features. The convergent emotional responses show that the patients resonated with the underlying emotion, not the surface motor pattern."

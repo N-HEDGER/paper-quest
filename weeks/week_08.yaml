@@ -1,0 +1,57 @@
+week_number: 8
+title: "Week 8"
+subtitle: "Week 8 — Anxiety, Fear and the Amygdala"
+
+podcast:
+  embed_url: "https://drive.google.com/file/d/14w0SlXqhcQOXw7SF06cCoJKzOTPd_fSn/preview"
+
+papers:
+  - title: "Prefrontal cortical function and anxiety: controlling attention to threat-related stimuli"
+    authors: "Bishop et al. (2004)"
+    journal: "Nature Neuroscience"
+    doi: "10.1038/nn1173"
+    openalex_id: "W2112011323"
+    embed_url: "https://drive.google.com/file/d/1njYRj6yJeUndxV8QmJ09CfSlcbAJlURw/preview"
+    mcqs:
+      - question: "Which prefrontal region did the authors associate with controlling attention to threat-related distractors?"
+        options:
+          - "Orbitofrontal cortex"
+          - "Dorsolateral prefrontal cortex"
+          - "Rostral anterior cingulate cortex and lateral PFC"
+          - "Ventromedial prefrontal cortex"
+        answer: 2
+      - question: "How did higher trait anxiety affect prefrontal responses to threat distractors?"
+        options:
+          - "It increased prefrontal control"
+          - "It had no effect"
+          - "It reduced prefrontal recruitment, especially for frequent threats"
+          - "It shifted processing to the cerebellum"
+        answer: 2
+    short_answers:
+      - question: "How does this study bridge cognitive control theory with models of anxiety?"
+        model_answer: "The study shows that the same prefrontal regions involved in cognitive control of non-emotional conflict (dorsal ACC, lateral PFC) also regulate attention to emotional distractors, but through partially dissociable subdivisions — rostral ACC responds to unexpected emotional conflict while dorsal ACC handles cognitive conflict. Crucially, anxiety reduces this prefrontal control, suggesting anxious individuals fail to recruit top-down mechanisms to suppress threat-related distractors, providing a neural basis for attentional biases in anxiety."
+
+  - title: "The human amygdala and the induction and experience of fear"
+    authors: "Feinstein et al. (2011)"
+    journal: "Current Biology"
+    doi: "10.1016/j.cub.2010.11.042"
+    openalex_id: "W2026202566"
+    embed_url: "https://drive.google.com/file/d/1mQ-g8JYVkUTtPjbI__SL4WvGytN1LhnN/preview"
+    mcqs:
+      - question: "What was unique about patient SM that made her valuable for this study?"
+        options:
+          - "She had damage to her prefrontal cortex"
+          - "She had focal bilateral amygdala lesions"
+          - "She had congenital blindness"
+          - "She had damage to her hippocampus"
+        answer: 1
+      - question: "How did SM respond when exposed to live snakes, spiders, and a haunted house?"
+        options:
+          - "She showed intense fear and avoidance"
+          - "She showed fear only to snakes"
+          - "She exhibited no fear and no avoidance behaviour"
+          - "She showed delayed fear responses"
+        answer: 2
+    short_answers:
+      - question: "What do SM's preserved abilities (other emotions, normal cognition) tell us about the specificity of amygdala function?"
+        model_answer: "SM's ability to experience other basic emotions (happiness, sadness, disgust) and maintain normal cognition despite absent fear demonstrates that the amygdala has a specific and pivotal role in fear rather than being a general-purpose emotion centre. The amygdala appears necessary for triggering the action programme of fear, and without this trigger, the subjective experience of fear is precluded — suggesting fear induction and fear experience are tightly coupled through amygdala function."

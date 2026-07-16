@@ -1,0 +1,57 @@
+week_number: 10
+title: "Week 10"
+subtitle: "Week 10 — Synaesthesia and Face Recognition"
+
+podcast:
+  embed_url: "https://drive.google.com/file/d/1eBSWRpViLjLAFXtiCH6PANPLT8cFdKZ9/preview"
+
+papers:
+  - title: "Induction of mirror-touch synaesthesia by increasing somatosensory cortical excitability"
+    authors: "Bolognini et al. (2013)"
+    journal: "Current Biology"
+    doi: "10.1016/j.cub.2013.03.036"
+    openalex_id: "W1994343269"
+    embed_url: "https://drive.google.com/file/d/1ienaWB22qoHqEmTR6wQ-AnZ2oGrkNNLb/preview"
+    mcqs:
+      - question: "What brain stimulation technique was used to induce synaesthesia-like effects?"
+        options:
+          - "Transcranial magnetic stimulation (TMS)"
+          - "Transcranial direct current stimulation (tDCS)"
+          - "Deep brain stimulation (DBS)"
+          - "Transcranial ultrasound"
+        answer: 1
+      - question: "Which individual difference modulated the synaesthesia-like effects of stimulation?"
+        options:
+          - "Age"
+          - "Handedness"
+          - "Empathic capacity"
+          - "Visual acuity"
+        answer: 2
+    short_answers:
+      - question: "What does this study suggest about the difference between synaesthetes and non-synaesthetes in terms of the mirror system for touch?"
+        model_answer: "The study suggests that non-synaesthetes have the same mirror-touch mechanisms as synaesthetes, but these operate below the threshold of conscious awareness. By increasing excitability of key areas (S1 and premotor cortex) with tDCS, non-synaesthetes showed crossmodal interference effects typically seen only in synaesthetes. This implies mirror-touch synaesthesia reflects an unusually active version of a universal mechanism, not a qualitatively different brain organisation."
+
+  - title: "Selective visual streaming in face recognition: evidence from developmental prosopagnosia"
+    authors: "Bentin et al. (1999)"
+    journal: "NeuroReport"
+    doi: "10.1097/00001756-199903170-00029"
+    openalex_id: "W2060336835"
+    embed_url: "https://drive.google.com/file/d/1wynsjyqBorWJeKqmPHqusNXmb0u4JajH/preview"
+    mcqs:
+      - question: "What is the N170 component and what does it normally respond to?"
+        options:
+          - "A late positive potential responding to familiar faces"
+          - "An early negative potential specifically elicited by human faces"
+          - "A motor-related potential for facial expressions"
+          - "An auditory component for voice recognition"
+        answer: 1
+      - question: "What was abnormal about the N170 in the prosopagnosic patient?"
+        options:
+          - "It was completely absent"
+          - "It was delayed by 200ms"
+          - "It showed no face specificity — equal responses to faces and objects"
+          - "It was present only in the left hemisphere"
+        answer: 2
+    short_answers:
+      - question: "What does this case of developmental prosopagnosia reveal about the computational requirements of face recognition?"
+        model_answer: "The case shows that face recognition requires an early, dedicated streaming process that selectively routes face-specific visual information into a specialised processing system. Despite having normal visual memory and ability to describe faces, the patient could not recognise them, and his N170 lacked face selectivity. This demonstrates that face recognition depends not just on general visual processing ability but on a specific early categorisation stage that streams face information to dedicated processors — without this streaming, downstream recognition fails."

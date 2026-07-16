@@ -1,0 +1,57 @@
+week_number: 5
+title: "Week 5"
+subtitle: "Week 5 — Pain Perception and Multisensory Modulation"
+
+podcast:
+  embed_url: "https://drive.google.com/file/d/1YFuwuWk_WHtHqBHjPK4vDPdar5fCIQbe/preview"
+
+papers:
+  - title: "Visual distortion of body size modulates pain perception"
+    authors: "Mancini et al. (2011)"
+    journal: "Psychological Science"
+    doi: "10.1177/0956797611398496"
+    openalex_id: "W2127072348"
+    embed_url: "https://drive.google.com/file/d/1sZFMgKjqmpZvLOMzm6l_-G343y1irH2g/preview"
+    mcqs:
+      - question: "What effect did visually enlarging the hand have on pain thresholds?"
+        options:
+          - "Pain thresholds decreased"
+          - "Pain thresholds increased (more analgesia)"
+          - "No effect on pain thresholds"
+          - "Pain thresholds became unpredictable"
+        answer: 1
+      - question: "What was the control condition used in the experiment?"
+        options:
+          - "Viewing someone else's hand"
+          - "Closing the eyes"
+          - "Viewing a neutral object at the same sizes"
+          - "Viewing a photograph of the hand"
+        answer: 2
+    short_answers:
+      - question: "What does this study reveal about the relationship between body representation and pain perception?"
+        model_answer: "The study demonstrates that pain perception depends on multisensory representations of the body — visual information about body size directly modulates sensory pain thresholds, showing that pain is not purely a bottom-up sensory process but is shaped by how the brain represents the body across modalities."
+
+  - title: "Brain-to-brain coupling during handholding is associated with pain reduction"
+    authors: "Goldstein et al. (2018)"
+    journal: "Proceedings of the National Academy of Sciences"
+    doi: "10.1073/pnas.1703643115"
+    openalex_id: "W2793106680"
+    embed_url: "https://drive.google.com/file/d/1r8IC38uypZ4NwwtjgR6t_FiqM5RF-jIW/preview"
+    mcqs:
+      - question: "What neuroimaging technique was used to measure brain-to-brain coupling?"
+        options:
+          - "fMRI"
+          - "PET scanning"
+          - "EEG hyperscanning"
+          - "MEG"
+        answer: 2
+      - question: "In which frequency band was brain-to-brain coupling primarily observed?"
+        options:
+          - "Delta (1-4 Hz)"
+          - "Theta (4-8 Hz)"
+          - "Alpha-mu (8-12 Hz)"
+          - "Gamma (30-100 Hz)"
+        answer: 2
+    short_answers:
+      - question: "How does this study extend our understanding of social touch analgesia beyond simple tactile mechanisms?"
+        model_answer: "The study shows that pain reduction during handholding is associated with interbrain synchrony between partners, and that this coupling correlates with the observer's empathic accuracy. This suggests social touch analgesia involves interpersonal neural coordination rather than just tactile input — the toucher's empathy actively contributes to pain relief through brain-to-brain coupling."
