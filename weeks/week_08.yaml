@@ -2,9 +2,6 @@ week_number: 8
 title: "Week 8"
 subtitle: "Week 8 — Anxiety, Fear and the Amygdala"
 
-podcast:
-  embed_url: "https://drive.google.com/file/d/14w0SlXqhcQOXw7SF06cCoJKzOTPd_fSn/preview"
-
 papers:
   - title: "Prefrontal cortical function and anxiety: controlling attention to threat-related stimuli"
     authors: "Bishop et al. (2004)"
@@ -12,6 +9,36 @@ papers:
     doi: "10.1038/nn1173"
     openalex_id: "W2112011323"
     embed_url: "https://drive.google.com/file/d/1njYRj6yJeUndxV8QmJ09CfSlcbAJlURw/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      This week we're looking at anxiety, fear, and the amygdala. Our first paper is from Bishop and colleagues, 2004, published in Nature Neuroscience.
+
+      Here's the basic question: when you're anxious, you tend to get distracted by threatening things in your environment — angry faces, potential dangers, ambiguous stimuli that might be threatening. This attentional bias towards threat is one of the most reliable findings in anxiety research. But what's the neural mechanism? Is it that the amygdala is overreacting to threat, or is it that the prefrontal cortex is failing to control attention?
+
+      Bishop's team used fMRI to test this. They had people with varying levels of trait anxiety perform an attention task where threatening faces appeared as distractors. The clever bit was manipulating the expectedness of these distractors — sometimes threatening faces appeared frequently, sometimes rarely.
+
+      What they found was that the prefrontal cortex — specifically the rostral anterior cingulate and lateral prefrontal regions — was responsible for controlling attention to threat-related distractors. When threat distractors were expected, the prefrontal cortex ramped up to suppress them. But here's the critical finding: in people with higher trait anxiety, this prefrontal recruitment was significantly reduced, particularly when threats were frequent and predictable.
+
+      So the problem in anxiety isn't necessarily that the threat detection system is overactive — it's that the cognitive control system fails to suppress it. The prefrontal cortex doesn't step in to say "I know that's there, but it's not relevant right now." This bridges two big literatures — cognitive control and clinical anxiety — by showing they share neural substrates.
+
+      Think about what this means therapeutically. If anxiety is partly a failure of prefrontal control, does that explain why cognitive behavioural therapy works — by training prefrontal engagement? And is there a tipping point where the system becomes overwhelmed and anxiety becomes self-reinforcing?
+    glossary:
+      - term: "Trait anxiety"
+        definition: "A stable personality characteristic reflecting a general tendency to perceive situations as threatening and respond with anxiety."
+      - term: "Attentional bias"
+        definition: "The tendency to preferentially allocate attention toward certain stimuli, such as threatening faces in anxious individuals."
+      - term: "Rostral anterior cingulate cortex"
+        definition: "A frontal midline region involved in detecting emotional conflict and regulating emotional responses."
+      - term: "Lateral prefrontal cortex"
+        definition: "A region on the outer surface of the frontal lobe involved in cognitive control, working memory, and attentional regulation."
+      - term: "Cognitive control"
+        definition: "The ability to flexibly direct attention and behaviour according to goals, suppressing irrelevant or distracting information."
+      - term: "Threat-related distractors"
+        definition: "Stimuli with negative emotional content (e.g. angry faces) that capture attention away from an ongoing task."
+      - term: "Top-down suppression"
+        definition: "The prefrontal cortex actively inhibiting processing of irrelevant stimuli to maintain focus on the current task."
+      - term: "Cognitive behavioural therapy"
+        definition: "A psychological treatment that targets maladaptive thought patterns and behaviours, the first-line therapy for anxiety disorders."
     mcqs:
       - question: "Which prefrontal region did the authors associate with controlling attention to threat-related distractors?"
         options:
@@ -37,6 +64,34 @@ papers:
     doi: "10.1016/j.cub.2010.11.042"
     openalex_id: "W2026202566"
     embed_url: "https://drive.google.com/file/d/1mQ-g8JYVkUTtPjbI__SL4WvGytN1LhnN/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      Our second paper this week is one of the most striking case studies in affective neuroscience. This is Feinstein and colleagues, 2011, and it centres on a patient known as SM.
+
+      SM has a rare genetic condition called Urbach-Wiethe disease, which caused selective bilateral calcification of her amygdalae — essentially, both her amygdalae were destroyed, with the rest of her brain left largely intact. This makes her extraordinarily valuable for understanding what the amygdala actually does, because you can see what's missing when it's gone.
+
+      What Feinstein's team did was expose SM to a range of fear-inducing stimuli — and not just in the lab. They took her to an exotic pet store and let her handle snakes and spiders, which she'd previously said she hated and avoided. They took her through a haunted house. They showed her horror film clips. In every case, SM showed no fear. She approached the snakes with curiosity, she laughed through the haunted house, she found the horror films interesting rather than frightening. She reported no fear, showed no avoidance, and displayed no physiological fear responses.
+
+      But here's what makes this more than just a "patient can't feel fear" story. SM could experience other emotions — happiness, sadness, disgust — perfectly normally. Her general cognition was intact. She could recognise fear in others and understand the concept of fear intellectually. She just couldn't feel it herself or generate the behavioural programme that goes with it.
+
+      This tells us something very specific about the amygdala: it's not a general-purpose emotion centre. It has a particular and pivotal role in fear — specifically in triggering the whole cascade of experience, physiology, and behaviour that constitutes a fear response. Without that trigger, the experience simply doesn't happen. Consider what this means for the relationship between knowing something is dangerous and actually feeling afraid. Can you have one without the other? SM suggests you can — and that has profound implications for how we think about risk, decision-making, and what fear is actually for.
+    glossary:
+      - term: "Urbach-Wiethe disease"
+        definition: "A rare genetic condition that can cause selective bilateral calcification and destruction of the amygdalae, leaving other brain structures intact."
+      - term: "Bilateral amygdala lesion"
+        definition: "Damage to the amygdala in both hemispheres, resulting in impaired fear processing while other emotions remain intact."
+      - term: "Fear conditioning"
+        definition: "A form of learning where a neutral stimulus becomes associated with a threat, eliciting a fear response on subsequent encounters."
+      - term: "Autonomic fear response"
+        definition: "The body's automatic physiological reaction to threat — increased heart rate, sweating, pupil dilation — driven by the sympathetic nervous system."
+      - term: "Calcification"
+        definition: "Abnormal accumulation of calcium deposits in tissue, in this case destroying amygdala neurons while preserving surrounding structures."
+      - term: "Avoidance behaviour"
+        definition: "Actions taken to prevent or escape contact with a feared stimulus, a hallmark behavioural component of fear."
+      - term: "Double dissociation"
+        definition: "Evidence that two cognitive functions are independent: one can be impaired while the other is spared, and vice versa."
+      - term: "Affective neuroscience"
+        definition: "The study of the neural mechanisms underlying emotions, moods, and feelings."
     mcqs:
       - question: "What was unique about patient SM that made her valuable for this study?"
         options:

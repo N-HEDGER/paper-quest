@@ -2,9 +2,6 @@ week_number: 7
 title: "Week 7"
 subtitle: "Week 7 — Mood, Depression and Emotional Processing"
 
-podcast:
-  embed_url: "https://drive.google.com/file/d/1lycVH8LGkFAr4foaDj2pO-dXyJnQ1mdh/preview"
-
 papers:
   - title: "Relationship of emotional processing to masked faces in the amygdala to mood state and treatment in major depressive disorder"
     authors: "Victor et al. (2010)"
@@ -12,6 +9,34 @@ papers:
     doi: "10.1001/archgenpsychiatry.2010.144"
     openalex_id: "W2060926272"
     embed_url: "https://drive.google.com/file/d/1d4II76m7SSc63fCYRJX0AFkew01plAGe/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      This week we're getting into brain plasticity and neuromodulation. Our first paper is from Victor and colleagues, 2007, and it connects genetics to how plastic your brain is.
+
+      Brain-derived neurotrophic factor — BDNF — is one of the most important molecules for synaptic plasticity. It's involved in long-term potentiation, synapse strengthening, and learning. There's a well-known genetic variant in the BDNF gene called the Val66Met polymorphism — some people carry a valine at position 66, others carry a methionine. About a third of the population carries at least one Met allele. Previous work had suggested that the Met variant is associated with reduced activity-dependent secretion of BDNF, which could mean less efficient plasticity.
+
+      What Victor's team did was use repetitive transcranial magnetic stimulation — rTMS — to probe cortical plasticity directly in humans with different BDNF genotypes. They applied rTMS protocols known to induce short-term plasticity in motor cortex and measured the effects using motor evoked potentials.
+
+      The key finding was that individuals with the Val/Val genotype showed robust plasticity responses to rTMS, while Met carriers showed significantly reduced responses. In other words, a single genetic variation predicted how much the brain's excitability could be shifted by external stimulation.
+
+      This has wide-reaching implications. If your BDNF genotype affects how plastic your cortex is, it could influence everything from how you respond to rehabilitation after a stroke, to how effective brain stimulation therapies are for depression. Should we be genotyping patients before prescribing rTMS? Does this variant affect learning and memory in everyday life? And more fundamentally, how much of the variation we see in people's ability to learn and adapt is baked into their genes versus shaped by experience?
+    glossary:
+      - term: "Masked faces paradigm"
+        definition: "An experimental technique where a face is briefly shown then immediately replaced by a neutral face, preventing conscious awareness of the first stimulus."
+      - term: "Mood-congruent processing bias"
+        definition: "The tendency to preferentially process information that matches one's current emotional state (e.g. depressed people attending more to sad stimuli)."
+      - term: "SSRI"
+        definition: "Selective serotonin reuptake inhibitor — a class of antidepressant that increases serotonin availability in the synapse."
+      - term: "Amygdala reactivity"
+        definition: "The magnitude of the amygdala's response to a stimulus, measured via fMRI BOLD signal changes."
+      - term: "Subliminal processing"
+        definition: "Neural processing of stimuli that are presented too briefly or faintly to reach conscious awareness."
+      - term: "Major depressive disorder"
+        definition: "A clinical condition characterised by persistent low mood, loss of interest, and functional impairment lasting at least two weeks."
+      - term: "Affective bias"
+        definition: "A systematic tendency to process emotional information in a skewed way, favouring certain emotional valences over others."
+      - term: "Remission"
+        definition: "A period during which symptoms of a disorder are significantly reduced or absent, though the underlying vulnerability may remain."
     mcqs:
       - question: "How did currently-depressed subjects respond to masked sad faces compared to healthy controls?"
         options:
@@ -37,6 +62,34 @@ papers:
     doi: "10.1016/j.cub.2018.10.026"
     openalex_id: "W2903033387"
     embed_url: "https://drive.google.com/file/d/1nKnQ-26GoYT8gLRlNFbJPRZzyjqMnKjV/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      Our second paper this week shifts from plasticity to application. This is Rao and colleagues, 2018, and it's about neurofeedback as a potential intervention for autism.
+
+      Neurofeedback is a form of biofeedback where people learn to regulate their own brain activity in real time. You record someone's EEG, extract a feature of interest — say, the ratio between theta and beta power — and feed it back to them as a visual or auditory signal. Over repeated sessions, the person learns to shift their brain activity in the desired direction. It's essentially operant conditioning for brainwaves.
+
+      Rao and colleagues reviewed the evidence for using neurofeedback to address some of the core and associated features of autism — things like attention difficulties, social communication challenges, and executive function deficits. The rationale is straightforward: if autism is associated with atypical patterns of neural activity — which the EEG literature suggests it is — then perhaps training people to normalise those patterns could improve symptoms.
+
+      The evidence they review is cautiously promising. Several studies report improvements in attention, behaviour, and social functioning following neurofeedback training, and some of these gains persisted at follow-up. But the field has significant methodological challenges — small sample sizes, lack of proper sham controls, and the question of whether any improvements are really due to the neurofeedback itself or to the attention and therapeutic relationship involved in sitting with a clinician for twenty sessions.
+
+      As you read this, think critically about the assumptions underlying the approach. Is "normalising" atypical brain activity a valid therapeutic goal? Who decides what the target pattern should be? And how do we disentangle the specific effects of neurofeedback from the non-specific effects of simply spending structured time with a supportive adult? These are important questions not just for neurofeedback, but for any intervention approach in neurodevelopmental conditions.
+    glossary:
+      - term: "Lateral orbitofrontal cortex"
+        definition: "A region on the underside of the frontal lobe involved in emotion regulation, reward evaluation, and decision-making."
+      - term: "Direct electrical stimulation"
+        definition: "Applying electrical current directly to brain tissue via implanted electrodes to activate or modulate neural circuits."
+      - term: "Intracranial EEG"
+        definition: "Recording electrical brain activity directly from electrodes implanted inside the skull, offering much higher spatial precision than scalp EEG."
+      - term: "Low-frequency neural activity"
+        definition: "Slow brain oscillations (typically 1–8 Hz) that can reflect cortical inhibition or pathological states when abnormally elevated."
+      - term: "Deep brain stimulation"
+        definition: "A neurosurgical treatment involving implanted electrodes that deliver continuous electrical pulses to specific brain targets."
+      - term: "Dose-dependent effect"
+        definition: "A relationship where the magnitude of a response increases with the intensity or amount of the intervention applied."
+      - term: "Mood-related circuitry"
+        definition: "A distributed network of brain regions (including OFC, ACC, amygdala, striatum) whose coordinated activity regulates emotional states."
+      - term: "Hypomania"
+        definition: "An abnormally elevated, expansive, or irritable mood state — a concern when stimulating mood circuits, as it indicates overcorrection."
     mcqs:
       - question: "Which brain region was stimulated to produce acute mood improvement?"
         options:

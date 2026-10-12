@@ -2,9 +2,6 @@ week_number: 4
 title: "Week 4"
 subtitle: "Week 4 — Neural Mechanisms in Autism Spectrum Disorders"
 
-podcast:
-  embed_url: "https://drive.google.com/file/d/1n4eMaoQr7eYWtu7T-tr4Mm7r3jsexHah/preview"
-
 papers:
   - title: "fMRI activation of the fusiform gyrus and amygdala to cartoon characters but not to faces in a boy with autism"
     authors: "Grelotti et al. (2005)"
@@ -12,6 +9,41 @@ papers:
     doi: "10.1016/j.neuropsychologia.2004.06.015"
     openalex_id: "W2105251885"
     embed_url: "https://drive.google.com/file/d/1_S0olC5KXR6ONap-0wilcw5pezgtBAUM/preview"
+    podcast_url: "https://drive.google.com/file/d/1xwcWOqZcsVydRNZSQn7QqOc_6UFf-tvA/preview"
+    podcast_images:
+      - after_paragraph: 0
+        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Fusiform_face_area_face_recognition.jpg/330px-Fusiform_face_area_face_recognition.jpg"
+        caption: "The fusiform face area — a region on the underside of the temporal lobe associated with face processing."
+      - after_paragraph: 1
+        url: "https://fbi.cults3d.com/uploaders/18850278/illustration-file/6d0d39c3-702d-40f4-87e9-b7127f79a580/digimon_01_collection.png"
+        caption: "Examples of Digimon (digital monsters) characters."
+    podcast_transcript: |
+      Alright, so this week we're looking at autism and our first paper is a really neat case study from Grelotti and colleagues and it was published in 2005. So here's the setup. There's a region in your brain called the fusiform face area and it sits on the underside of the temporal lobe and in most people it lights up fairly reliably when you look at faces and so this is why it's become known as the fusiform face area.
+
+      And the assumption for a long time was that this region is essentially hardwired for faces or in other words it's this dedicated face processor that doesn't really care that much about the other things that you might show it. Now what Grelotti's team did was they scanned a boy with autism using fMRI. And this boy, like many young children with autism, had a very specific interest and in his case it was Digimon which was a type of animal cartoon character. Now this boy had the typical pattern that you see in autism research which is that there was reduced fusiform face area activity to human faces.
+
+      But here's where it gets interesting. When they showed him Digimon characters in the scanner, his fusiform face area and his amygdala lit up very strongly. In other words the brain responses that you tend to see for faces in your typical individuals were instead seen for Digimon in this individual. So what does this tell us? Firstly it challenges the idea that the fusiform face area is just a face processing module. And instead what it suggests is that what really drives this region is expertise and personal interest. So things that you spend a lot of time learning to distinguish between - things that matter to you ultimately. Now for many of us that's faces because we're socially motivated from birth. So for this boy that motivation was instead directed elsewhere and the neural machinery followed that. So instead of being specialized in processing faces his fusiform face area became specialized in processing Digimon instead.
+
+      So in other words what this means is that the neural machinery that tends to be involved in social perception for instance the fusiform face area and the amygdala might actually be co-opted in individuals with autism to have a different function and be dedicated towards processing other things. So it might provide some useful neural explanation for how we understand the behaviors of people with autism which tend to show very distinct patterns of behavior when it comes to social perception. It may be a function of the way the brain is functionally organized in this different way.
+
+      So this is a single case study based on one specific individual and therefore we need to be cautious but I think it raises some very interesting questions. So for instance how much of what we understand about what the brain does is actually based on neurotypical individuals. So for instance should we even be calling this region of the brain the fusiform face area at all. Secondly what exactly is it about early development that might cause a neurotypical individual to prioritize faces and social stimuli and an individual with autism to prioritize things within their restricted interests. Thirdly what implications does this have for screening, intervention and so on? So I think these are the kinds of questions this paper really opens up and they're worth holding on to in your mind as you read through it. Enjoy the paper.
+    glossary:
+      - term: "Fusiform gyrus"
+        definition: "A region on the underside of the temporal lobe that responds strongly to faces in most people, often called the fusiform face area (FFA)."
+      - term: "Amygdala"
+        definition: "A small almond-shaped structure in the medial temporal lobe involved in processing emotional salience and social stimuli."
+      - term: "fMRI"
+        definition: "Functional magnetic resonance imaging — measures brain activity by detecting changes in blood oxygenation (the BOLD signal)."
+      - term: "Social motivation"
+        definition: "The innate drive to attend to, seek out, and find reward in social stimuli such as faces, voices, and social interaction."
+      - term: "Restricted interests"
+        definition: "Intense, narrowly focused interests or preoccupations that are a core feature of autism spectrum disorders."
+      - term: "Neural specialisation"
+        definition: "The process by which brain regions become tuned to process specific categories of stimuli through experience and exposure."
+      - term: "Case study"
+        definition: "A detailed investigation of a single individual, used to explore phenomena that cannot be studied in group designs."
+      - term: "BOLD signal"
+        definition: "Blood-oxygen-level-dependent signal — the indirect measure of neural activity used in fMRI, based on changes in blood oxygenation."
     mcqs:
       - question: "Which brain region is primarily associated with face processing in typically developing individuals?"
         options:
@@ -20,13 +52,20 @@ papers:
           - "Prefrontal cortex"
           - "Cerebellum"
         answer: 1
-      - question: "What type of stimuli did the boy with autism show greater fusiform activation for, compared to faces?"
+      - question: "What type of stimuli did DD show greater fusiform activation for, compared to faces?"
         options:
           - "Animals"
           - "Landscapes"
           - "Cartoon characters"
           - "Geometric shapes"
         answer: 2
+      - question: "Which of these measures were used to assess autism diagnostic severity?"
+        options:
+          - "ADOS"
+          - "AUT-V"
+          - "WISC-III"
+          - "Benton Test"
+        answer: 0
     short_answers:
       - question: "What does this case study suggest about the role of expertise and interest in fusiform gyrus activation?"
         model_answer: "The study suggests that fusiform gyrus activation may be driven by individual expertise and personal interest rather than being face-specific — the boy's intense interest in cartoon characters led to fusiform activation for those stimuli instead of faces."
@@ -37,6 +76,42 @@ papers:
     doi: "10.1016/j.celrep.2013.10.003"
     openalex_id: "W2137784786"
     embed_url: "https://drive.google.com/file/d/1iKpb6pnbW8XPs_mWOxYwQBltwZ-6CmZM/preview"
+    podcast_url: "https://drive.google.com/file/d/1wPhzyuXXrNaDBC2MaNtnEAoOj2ECCNNe/preview"
+    podcast_images:
+      - after_paragraph: 2
+        url: "https://mriquestions.com/uploads/3/4/5/7/34572113/editor/resting-state-fmri-optimized.gif?1790188092"
+        caption: "Spontaneous fluctuations in bold responses during resting state."
+      - after_paragraph: 3
+        url: "https://ars.els-cdn.com/content/image/1-s2.0-S221112471300572X-fx1.jpg"
+        caption: "Greater local connectivity in the occipital lobe in autism predicts symptom severity."
+
+    podcast_transcript: |
+      Okay, so our second paper this week takes a step back from individual brain regions and looks instead at how different parts of the brain talk to each other in autism. In other words, this is about connectivity. And this is a study by Keown and colleagues published in Cell Reports in 2013.
+
+      So as a bit of background, for a while, the dominant theory in autism neuroscience was something called the underconnectivity hypothesis. In other words, the idea that long-range connections between distant brain regions are weaker in autism. And this might explain difficulties with complex tasks that require integrating information across the brain. And there is some decent evidence for that.
+
+      But Keown's team asked a more nuanced question, what about local connections, what's happening within individual brain regions. So in this paper, they use the technique called resting state fMRI. So in other words, this is a very simple paradigm where you put a participant in the MRI scanner and you simply measure blood oxygen level dependent changes whilst the participant is resting. There's no task or anything like that. And what they found was that posterior regions of the brain, particularly visual and sensory areas, showed local overconnectivity in individuals with autism. So in other words, nearby regions of the brain were talking to each other more than you'd expect, not less. And critically, the degree of this local overconnectivity correlated with symptom severity. So more overconnectivity, more severe symptoms.
+
+      So this gives us a really interesting picture. It's not simply that the autistic brain is underconnected. Instead, there seems to be a trade-off. Regions are overly connected locally, perhaps at the cost of efficient long range integration. So you can think of it as being like a city where every neighbourhood has incredibly dense internal roads. But the motorways connecting the neighbourhoods are underdeveloped. So what this means is that information gets processed intensely within local circuits, but integrating across the brain becomes harder.
+
+      So as you read this paper, think about what this pattern might mean for the sensory experiences often reported in autism. The heightened sensitivity, the intense focus on detail, could local overconnectivity be the neural basis of this? And how does this reshape your understanding of what connectivity means in the brain? Is more always better, or is it about the right balance between local connectivity and global connectivity? In some situations, maybe these might be associated with perceptual strengths. In other cases, perhaps they might be associated with perceptual over-sensitivity and things of that nature. So take a look at the paper and let me know what you think.
+    glossary:
+      - term: "Resting-state fMRI"
+        definition: "An fMRI technique that measures spontaneous brain activity while the participant is at rest, revealing intrinsic functional connectivity patterns."
+      - term: "Functional connectivity"
+        definition: "The statistical correlation between activity in different brain regions, indicating they communicate or co-activate."
+      - term: "Local overconnectivity"
+        definition: "Abnormally high correlations between nearby brain regions, suggesting excessively dense short-range neural communication."
+      - term: "Long-range underconnectivity"
+        definition: "Reduced correlation between distant brain regions, suggesting impaired integration of information across the brain."
+      - term: "Posterior brain regions"
+        definition: "Areas toward the back of the brain, including visual and sensory cortices responsible for perceptual processing."
+      - term: "Symptom severity"
+        definition: "The degree to which behavioural or clinical features of a condition are pronounced, typically measured with standardised scales."
+      - term: "Underconnectivity hypothesis"
+        definition: "The theory that autism involves weakened long-range neural connections, impairing integration across brain networks."
+      - term: "Somatosensory cortex"
+        definition: "A strip of cortex in the parietal lobe that processes touch, pressure, temperature, and body position information."
     mcqs:
       - question: "What pattern of functional connectivity did the authors find in posterior brain regions of participants with ASD?"
         options:
@@ -52,6 +127,13 @@ papers:
           - "Greater overconnectivity was associated with more severe symptoms"
           - "The relationship was U-shaped"
         answer: 2
+      - question: "How long was each resting state scan?"
+        options:
+          - "6 min 10 sec"
+          - "15 mins"
+          - "10 mins 20 sec"
+          - "4 mins"
+        answer: 0
     short_answers:
-      - question: "How do the findings of local overconnectivity relate to theories of long-range underconnectivity in autism?"
-        model_answer: "The findings suggest that autism involves both local overconnectivity and long-range underconnectivity — posterior regions are overly connected locally, which may come at the cost of efficient long-range integration, supporting a model where local over-processing and global under-integration coexist."
+      - question: "How do the findings of local overconnectivity relate to weak central coherence theory?"
+        model_answer: "Weak central coherence theory proposes that autism is characterized by a detail-focused cognitive style that prioritizes local parts over the overall 'big picture' or global context. Connectivity that is biased at the local level as opposed to integrating over large regions may be a neural correlate of such effects."

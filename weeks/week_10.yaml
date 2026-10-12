@@ -2,9 +2,6 @@ week_number: 10
 title: "Week 10"
 subtitle: "Week 10 — Synaesthesia and Face Recognition"
 
-podcast:
-  embed_url: "https://drive.google.com/file/d/1eBSWRpViLjLAFXtiCH6PANPLT8cFdKZ9/preview"
-
 papers:
   - title: "Induction of mirror-touch synaesthesia by increasing somatosensory cortical excitability"
     authors: "Bolognini et al. (2013)"
@@ -12,6 +9,34 @@ papers:
     doi: "10.1016/j.cub.2013.03.036"
     openalex_id: "W1994343269"
     embed_url: "https://drive.google.com/file/d/1ienaWB22qoHqEmTR6wQ-AnZ2oGrkNNLb/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      For our final week, we're looking at synaesthesia and face recognition. Our first paper is from Bolognini and colleagues, 2013.
+
+      Mirror-touch synaesthesia is a fascinating condition where seeing someone else being touched causes you to feel the touch on your own body. If a mirror-touch synaesthete watches you being tapped on your left cheek, they feel a tap on their own cheek. It's estimated to affect about 1-2% of the population, and it's thought to relate to an overactive mirror system — the neural machinery that maps observed actions and sensations onto your own body representations.
+
+      What Bolognini's team asked was: is mirror-touch synaesthesia a qualitatively different brain, or is it an extreme version of something everyone has? To test this, they used transcranial direct current stimulation — tDCS — to increase the excitability of somatosensory cortex and premotor cortex in non-synaesthetes. Then they tested whether these people started showing synaesthesia-like effects.
+
+      And they did. After excitatory stimulation, non-synaesthetes showed crossmodal interference effects that are normally only seen in mirror-touch synaesthetes — they were slower to report where they'd been touched when they simultaneously watched someone else being touched in a different location. Crucially, the strength of this effect was modulated by the individual's empathic capacity — more empathic people showed stronger effects.
+
+      This is a powerful finding. It suggests that all of us have the neural architecture for mirror-touch synaesthesia — the mechanisms are universal — but in most people, they operate below the threshold of conscious awareness. Synaesthetes don't have a fundamentally different brain; they have a more excitable version of the same system. Think about what this means for the boundary between "normal" and "atypical" perception. Is synaesthesia really a discrete condition, or is it one end of a continuum? And what role does somatosensory excitability play in empathy more broadly — if you literally feel what others feel, does that make you more empathic, or is it the other way around?
+    glossary:
+      - term: "Mirror-touch synaesthesia"
+        definition: "A condition where seeing someone else being touched causes the observer to feel the touch on their own body."
+      - term: "Transcranial direct current stimulation (tDCS)"
+        definition: "A non-invasive brain stimulation technique that passes a weak electrical current through the scalp to increase or decrease cortical excitability."
+      - term: "Somatosensory cortex (S1)"
+        definition: "Primary somatosensory cortex in the parietal lobe — processes touch, pressure, and body-related sensory information."
+      - term: "Premotor cortex"
+        definition: "A frontal lobe region involved in planning movements and, via the mirror system, in mapping observed actions onto one's own body."
+      - term: "Cortical excitability"
+        definition: "How readily neurons in a brain region fire in response to input — higher excitability means a lower threshold for activation."
+      - term: "Threshold of conscious awareness"
+        definition: "The level of neural activity above which a stimulus or internal state becomes consciously experienced."
+      - term: "Continuum model"
+        definition: "The view that atypical perceptual experiences (like synaesthesia) are extreme points on a spectrum shared by all brains, not qualitatively different."
+      - term: "Empathic capacity"
+        definition: "An individual's trait-level ability to share and understand others' emotions, typically measured with self-report questionnaires."
     mcqs:
       - question: "What brain stimulation technique was used to induce synaesthesia-like effects?"
         options:
@@ -37,6 +62,36 @@ papers:
     doi: "10.1097/00001756-199903170-00029"
     openalex_id: "W2060336835"
     embed_url: "https://drive.google.com/file/d/1wynsjyqBorWJeKqmPHqusNXmb0u4JajH/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      Our final paper is from Bentin and colleagues, 1999, and it's about a patient with developmental prosopagnosia — a lifelong inability to recognise faces.
+
+      There's an ERP component called the N170 — it's a negative voltage deflection that peaks about 170 milliseconds after you see a stimulus, and in most people it's significantly larger for faces than for other objects. It's thought to reflect the early categorisation stage where the visual system says "this is a face" and routes it into specialised face-processing machinery. Think of it as a sorting mechanism — a gate that streams face information into the dedicated face network.
+
+      Bentin's patient was a young man who had never been able to recognise faces. He could describe faces in detail — he could tell you someone had blue eyes, a large nose, a round chin — but he couldn't put these features together into a recognisable identity. He'd fail to recognise family members, colleagues, even himself in photographs. And yet his general visual abilities were intact — he could recognise objects, read, navigate, and his visual memory was normal.
+
+      When they recorded his ERPs, his N170 showed no face specificity whatsoever. It responded equally to faces and objects. The sorting gate was broken — his visual system wasn't flagging faces as special at the earliest processing stage.
+
+      This tells us something fundamental about face recognition. It's not enough to have good general vision and good memory. Face recognition requires a specific early streaming process — a mechanism that identifies a stimulus as a face within the first 170 milliseconds and routes it into dedicated processing channels. Without this streaming step, all the downstream face-processing machinery is starved of input. The patient could see faces perfectly well as visual objects, but because they were never categorised as faces early on, the specialised recognition system never got engaged.
+
+      What does this tell us about how the brain organises expertise more generally? Is this streaming mechanism unique to faces, or does it exist for other categories we become expert with — like words for a literate person, or cars for a car enthusiast? And does this connect back to what we discussed in week four with the Grelotti case — is the fusiform face area downstream of exactly this kind of early categorisation process?
+    glossary:
+      - term: "N170"
+        definition: "An ERP component peaking ~170ms after stimulus onset, typically much larger for faces than objects — reflects early face categorisation."
+      - term: "Event-related potential (ERP)"
+        definition: "A brain voltage pattern time-locked to a stimulus, extracted from EEG by averaging many trials to reveal consistent neural responses."
+      - term: "Developmental prosopagnosia"
+        definition: "A lifelong inability to recognise faces despite normal vision and intelligence, present from birth rather than caused by brain injury."
+      - term: "Visual streaming"
+        definition: "The early perceptual process of categorising a stimulus and routing it into the appropriate specialised processing pathway."
+      - term: "Face specificity"
+        definition: "A neural response that is significantly larger or qualitatively different for faces compared to non-face objects."
+      - term: "Configural processing"
+        definition: "Perceiving the spatial relationships between features as a whole (e.g. eyes-nose-mouth spacing) rather than processing each feature independently."
+      - term: "Featural processing"
+        definition: "Analysing individual features of a stimulus (eye colour, nose shape) one at a time, without integrating them into a whole."
+      - term: "Temporal cortex"
+        definition: "Brain regions in the temporal lobe involved in high-level visual recognition, including faces, objects, and scenes."
     mcqs:
       - question: "What is the N170 component and what does it normally respond to?"
         options:

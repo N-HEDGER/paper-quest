@@ -2,9 +2,6 @@ week_number: 5
 title: "Week 5"
 subtitle: "Week 5 — Pain Perception and Multisensory Modulation"
 
-podcast:
-  embed_url: "https://drive.google.com/file/d/1YFuwuWk_WHtHqBHjPK4vDPdar5fCIQbe/preview"
-
 papers:
   - title: "Visual distortion of body size modulates pain perception"
     authors: "Mancini et al. (2011)"
@@ -12,6 +9,34 @@ papers:
     doi: "10.1177/0956797611398496"
     openalex_id: "W2127072348"
     embed_url: "https://drive.google.com/file/d/1sZFMgKjqmpZvLOMzm6l_-G343y1irH2g/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      This week we're moving into the somatosensory system — how the brain processes touch and pain across the body. Our first paper is from Mancini and colleagues, published in 2011.
+
+      Here's something you might take for granted: if someone pokes you on the fingertip, you can tell exactly where they touched you. But if someone pokes you in the middle of your back, your spatial precision drops off dramatically. This variation in spatial acuity across the body surface is well established for touch — it roughly follows the density of sensory receptors in the skin and the amount of cortical territory devoted to each body part. That's your classic somatosensory homunculus.
+
+      But what about pain? Is the spatial acuity of pain distributed the same way as touch, or does it follow its own map? That's what Mancini's team set out to test. They systematically measured spatial acuity for both touch and pain across the entire body surface.
+
+      What they found was that pain and touch share broadly similar spatial patterns — areas with high tactile acuity, like the hands and face, also tend to have better pain localisation. But the maps aren't identical. Pain acuity is generally coarser than touch, and some body regions showed dissociations between the two. This suggests that while pain and touch share some common neural architecture — likely at the level of primary somatosensory cortex — they also rely on partially distinct processing pathways.
+
+      Think about what this means for clinical practice. If a patient reports diffuse pain, is that because the injury itself is diffuse, or because that body region simply has poor pain localisation? And what does this tell us about how the brain constructs a spatial model of the body — is there one unified body map, or multiple overlapping maps for different modalities?
+    glossary:
+      - term: "Somatosensory homunculus"
+        definition: "A distorted map of the body surface on the cortex, where areas with greater sensory precision (hands, lips) occupy more cortical territory."
+      - term: "Multisensory integration"
+        definition: "The brain's process of combining information from different senses (e.g. vision and touch) to form a unified perception."
+      - term: "Pain threshold"
+        definition: "The minimum stimulus intensity at which a person reports perceiving pain."
+      - term: "Body representation"
+        definition: "The brain's internal model of the body's size, shape, and boundaries, constructed from multiple sensory inputs."
+      - term: "Analgesia"
+        definition: "Reduction in pain perception, which can be produced by drugs, brain stimulation, or psychological factors."
+      - term: "Spatial acuity"
+        definition: "The ability to distinguish two nearby points of stimulation as separate, varying across the body surface."
+      - term: "Top-down modulation"
+        definition: "Higher-level cognitive processes (expectations, attention, beliefs) influencing lower-level sensory processing."
+      - term: "Nociception"
+        definition: "The sensory nervous system's detection of potentially harmful stimuli, distinct from the subjective experience of pain."
     mcqs:
       - question: "What effect did visually enlarging the hand have on pain thresholds?"
         options:
@@ -37,6 +62,34 @@ papers:
     doi: "10.1073/pnas.1703643115"
     openalex_id: "W2793106680"
     embed_url: "https://drive.google.com/file/d/1r8IC38uypZ4NwwtjgR6t_FiqM5RF-jIW/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      Our second paper this week is from Goldstein and colleagues, 2018, and it's a fascinating study that sits right at the intersection of social neuroscience and pain research.
+
+      The basic finding is this: when romantic partners hold hands while one of them is in pain, their brainwaves synchronise — and the more they synchronise, the more the pain is reduced. That's a remarkable claim, so let's unpack how they tested it.
+
+      They used EEG to measure brain activity simultaneously in both partners — this is called hyperscanning — across several conditions: sitting together, sitting apart, holding hands, and not holding hands, with and without pain. What they found was that inter-brain coupling — the correlation between the two people's neural signals — increased during handholding, and increased further when one partner was in pain. Most importantly, the degree of this coupling in the alpha frequency band predicted how much pain relief the partner in pain actually experienced.
+
+      The mechanism they propose involves the empathic accuracy of the non-suffering partner. The more empathic the partner, the stronger the brain-to-brain coupling, and the greater the analgesic effect. It's as if the non-suffering partner's brain is modelling the other's pain state, and this neural alignment somehow facilitates pain regulation.
+
+      This raises some genuinely profound questions. How does one person's brain activity physically influence another person's pain experience? What's the pathway — is it through touch, through autonomic synchronisation, through some top-down modulation of pain circuits? And what does this mean for our understanding of pain as a purely individual experience? This paper challenges us to think about pain as something that exists between people, not just within them.
+    glossary:
+      - term: "Hyperscanning"
+        definition: "Simultaneous recording of brain activity from two or more people, used to measure inter-brain synchrony during social interaction."
+      - term: "Inter-brain coupling"
+        definition: "Statistical correlation between neural signals recorded from two people, reflecting shared or coordinated brain states."
+      - term: "Alpha-mu rhythm"
+        definition: "Brain oscillations at 8–12 Hz, prominent over sensorimotor and parietal cortex, involved in sensory processing and social cognition."
+      - term: "EEG"
+        definition: "Electroencephalography — records electrical brain activity from scalp electrodes with millisecond precision."
+      - term: "Social touch analgesia"
+        definition: "Pain reduction that occurs through physical contact with another person, particularly a close social partner."
+      - term: "Empathic accuracy"
+        definition: "The ability to accurately infer another person's emotional or mental state."
+      - term: "Autonomic synchronisation"
+        definition: "Alignment of physiological responses (heart rate, breathing, skin conductance) between interacting individuals."
+      - term: "Analgesic effect"
+        definition: "A measurable reduction in pain perception or pain-related neural activity."
     mcqs:
       - question: "What neuroimaging technique was used to measure brain-to-brain coupling?"
         options:

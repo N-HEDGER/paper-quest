@@ -1,0 +1,5 @@
+# Maximum week students can access.
+# Set this to the highest week number you have audio recordings for.
+# Students cannot progress beyond this week, even if they've completed it.
+# Set to null or remove to allow all weeks.
+max_week: 4

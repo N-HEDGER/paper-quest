@@ -2,9 +2,6 @@ week_number: 9
 title: "Week 9"
 subtitle: "Week 9 — Blindsight and Unconscious Visual Processing"
 
-podcast:
-  embed_url: "https://drive.google.com/file/d/1hSIe4rXhIWTxAsrldYLLw4ptJzCOdhif/preview"
-
 papers:
   - title: "Intact navigation skills after bilateral loss of striate cortex"
     authors: "de Gelder et al. (2008)"
@@ -12,6 +9,34 @@ papers:
     doi: "10.1016/j.cub.2008.11.002"
     openalex_id: "W2101077368"
     embed_url: "https://drive.google.com/file/d/1O5iNsv4dOn0bcbp3Jac45ZRSPA7suO-z/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      This week we're exploring blindsight — one of the most counterintuitive phenomena in neuroscience. Our first paper is from de Gelder and colleagues, 2008.
+
+      Patient TN is clinically blind. He suffered two successive strokes that destroyed his primary visual cortex — area V1 — in both hemispheres. He has no conscious visual experience. Standard clinical tests confirm he cannot see. He uses a cane to get around. And yet — and this is the remarkable part — when researchers placed him in a corridor filled with obstacles and asked him to walk through it without his cane, he navigated around every single object. He didn't bump into anything. He turned his body to squeeze past obstacles. And when asked afterwards, he had no awareness that the obstacles were there. He thought the corridor was empty.
+
+      This is blindsight taken to an extraordinary level. Previous demonstrations of blindsight typically involved simple forced-choice tasks in the lab — detecting whether a stimulus appeared on the left or right. TN's case showed that visually guided behaviour without awareness can extend to complex, whole-body navigation in a naturalistic environment.
+
+      The explanation lies in the visual pathways that bypass V1. There are several subcortical routes — through the superior colliculus and pulvinar, for instance — that can carry visual information to motor and spatial processing areas without it ever reaching conscious awareness. In sighted people, these pathways are largely overshadowed by the dominant V1 route. But when V1 is gone, they can sustain surprisingly sophisticated spatial behaviour.
+
+      What does this mean for our understanding of consciousness and vision? We tend to equate seeing with visual awareness, but TN shows they're dissociable. How much of your daily visual behaviour is actually conscious? When you dodge someone on a busy pavement, are you consciously processing their position, or is a lot of that handled by these faster, unconscious pathways? And what does it mean to "see" something if you can act on it without knowing it's there?
+    glossary:
+      - term: "Blindsight"
+        definition: "The ability to respond to visual stimuli without conscious awareness, occurring after damage to primary visual cortex (V1)."
+      - term: "Primary visual cortex (V1)"
+        definition: "The first cortical area to receive visual input, located in the occipital lobe — damage causes cortical blindness."
+      - term: "Superior colliculus"
+        definition: "A midbrain structure that processes visual spatial information and directs eye movements, bypassing V1 via a subcortical route."
+      - term: "Pulvinar"
+        definition: "A large thalamic nucleus that relays visual information to cortical areas, forming part of the subcortical visual pathway."
+      - term: "Subcortical visual pathways"
+        definition: "Neural routes that carry visual information from the retina to motor and spatial areas without passing through V1 or reaching awareness."
+      - term: "Cortical blindness"
+        definition: "Loss of visual awareness due to damage to visual cortex, despite the eyes and optic nerves being intact."
+      - term: "Visuo-spatial processing"
+        definition: "The brain's ability to perceive, analyse, and act on spatial relationships between objects in the visual field."
+      - term: "Forced-choice task"
+        definition: "An experimental paradigm where participants must choose between options (e.g. left or right), even if they report not seeing anything."
     mcqs:
       - question: "What was remarkable about patient TN's condition?"
         options:
@@ -37,6 +62,34 @@ papers:
     doi: "10.1073/pnas.0908994106"
     openalex_id: "W1978547286"
     embed_url: "https://drive.google.com/file/d/1UfsZw68Hlx-Yrd-2kLdsjDkC85E9qhfI/preview"
+    podcast_url: ""
+    podcast_transcript: |
+      Our second paper this week builds on blindsight but takes it into emotional territory. This is Tamietto and colleagues, 2009, published in PNAS.
+
+      We've just seen with TN that you can navigate without conscious vision. But can you also respond emotionally to things you can't see? That's what Tamietto's team tested. They presented emotional expressions — both faces and bodies — to the blind visual field of patients with cortical damage, and measured automatic facial reactions using electromyography, or EMG. EMG picks up tiny muscle movements in the face — the kind of micro-expressions you produce unconsciously when you see someone smile or grimace.
+
+      The findings were striking. Even though the patients couldn't consciously see the emotional stimuli, their faces automatically mirrored the emotion expressed. Happy expressions triggered activity in the smile muscles, fearful expressions triggered activity in the frown muscles. And here's the really interesting bit: the reactions to unseen stimuli were actually faster than reactions to stimuli the patients could consciously see, and they produced higher physiological arousal.
+
+      But the authors argue this isn't simple mimicry — it's something deeper. They showed that visually very different stimuli — a fearful face versus a fearful body posture — produced remarkably similar facial responses. If this were mimicry, you'd expect the face to copy the specific motor pattern it saw. Instead, the patients were responding to the emotional meaning of the expression, regardless of its visual form. The authors call this affective resonance rather than motor mimicry.
+
+      This raises fascinating questions about the nature of emotional processing. If you can resonate with someone's emotion without even being aware of seeing them, how much of our social emotional life is operating below the surface of consciousness? Is empathy fundamentally a conscious process, or is it built on these rapid, automatic mechanisms? And what happens when these unconscious emotional pathways are intact but conscious emotional processing is impaired — could this explain some of the dissociations we see in clinical conditions?
+    glossary:
+      - term: "Electromyography (EMG)"
+        definition: "A technique that records electrical activity from muscles — facial EMG detects micro-expressions invisible to the naked eye."
+      - term: "Affective resonance"
+        definition: "Automatically sharing another person's emotional state, driven by the emotional meaning of the stimulus rather than motor mimicry."
+      - term: "Motor mimicry"
+        definition: "Unconsciously copying the physical movements or expressions of another person, a more superficial form of social mirroring."
+      - term: "Blind visual field"
+        definition: "The portion of the visual field where a patient has no conscious vision due to cortical damage, though unconscious processing may persist."
+      - term: "Crossmodal interference"
+        definition: "When information in one sensory modality disrupts or influences processing in another (e.g. seeing touch affecting felt touch)."
+      - term: "Mirror system"
+        definition: "A network of brain regions that activates both when performing an action and when observing the same action in others."
+      - term: "Physiological arousal"
+        definition: "Measurable changes in bodily state (heart rate, skin conductance, pupil size) reflecting autonomic nervous system activation."
+      - term: "Emotional contagion"
+        definition: "The automatic, unconscious tendency to catch and share the emotions of those around you."
     mcqs:
       - question: "What technique was used to measure participants' automatic facial reactions?"
         options:

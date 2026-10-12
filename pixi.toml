@@ -1,0 +1,15 @@
+[project]
+name = "paper-quest"
+channels = ["conda-forge"]
+platforms = ["osx-arm64"]
+
+[dependencies]
+python = ">=3.10"
+pip = "*"
+ffmpeg = "*"
+
+[tasks]
+transcribe = "python transcribe.py"
+
+[pypi-dependencies]
+openai-whisper = "*"

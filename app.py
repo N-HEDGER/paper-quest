@@ -9,9 +9,21 @@ from streamlit_agraph import agraph, Node, Edge, Config
 
 BASE = Path(__file__).parent
 WEEKS_DIR = BASE / "weeks"
+CONFIG_FILE = BASE / "config.yaml"
 HERO_IMAGE = BASE / "graphics" / "A97603_SREP_TOP_100_NEUROSCI_HERO_580x326px-b834fe7c2c0f7a2082d6501e2a5b8433.jpg"
 
 WEEK_NUMBERS = []
+
+
+def _load_config():
+    if CONFIG_FILE.exists():
+        with open(CONFIG_FILE) as fh:
+            return yaml.safe_load(fh) or {}
+    return {}
+
+
+APP_CONFIG = _load_config()
+MAX_WEEK = APP_CONFIG.get("max_week")
 
 
 def _load_weeks():
@@ -111,6 +123,25 @@ def _save_user_progress(username: str):
         sheet.update(f"A{row_num}", [values])
 
 
+def _save_paper_feedback(username: str, week_number: int, paper_index: int,
+                         difficulty: int, feedback_text: str):
+    sheet = _get_gsheet()
+    if sheet is None:
+        return
+
+    try:
+        spreadsheet = sheet.spreadsheet
+        try:
+            fb_sheet = spreadsheet.worksheet("Feedback")
+        except Exception:
+            fb_sheet = spreadsheet.add_worksheet(title="Feedback", rows=500, cols=5)
+            fb_sheet.update("A1", [["username", "week", "paper", "difficulty", "feedback"]])
+
+        fb_sheet.append_row([username, week_number, paper_index + 1, difficulty, feedback_text])
+    except Exception:
+        pass
+
+
 def _restore_progress_to_session(username: str, row: dict):
     st.session_state.username = username
     st.session_state.logged_in = True
@@ -121,10 +152,13 @@ def _restore_progress_to_session(username: str, row: dict):
 
 
 def _week_is_unlocked(week_idx: int) -> bool:
+    wn = WEEK_NUMBERS[week_idx]
+    if MAX_WEEK is not None and wn > MAX_WEEK:
+        return False
     if week_idx == 0:
         return True
     prev_wn = WEEK_NUMBERS[week_idx - 1]
-    return st.session_state.get(f"week_{prev_wn}_stage", 0) >= 5
+    return st.session_state.get(f"week_{prev_wn}_stage", 0) >= 6
 
 
 def _sheets_available() -> bool:
@@ -149,42 +183,42 @@ CUSTOM_CSS = """
 .stApp { font-family: 'Inter', sans-serif; }
 
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #0a0e27 0%, #131842 50%, #1a1040 100%);
-    border-right: 1px solid rgba(100, 120, 255, 0.15);
+    background: linear-gradient(180deg, #1c1e22 0%, #22252a 50%, #1a1c20 100%);
+    border-right: 1px solid rgba(212, 160, 84, 0.12);
 }
 section[data-testid="stSidebar"] .stMarkdown p,
 section[data-testid="stSidebar"] .stMarkdown h2,
 section[data-testid="stSidebar"] .stMarkdown h3 {
-    color: #e0e4ff !important;
+    color: #dcd5cb !important;
 }
 
 .hero-banner {
     position: relative; border-radius: 16px; overflow: hidden;
-    margin-bottom: 2rem; box-shadow: 0 8px 32px rgba(80, 100, 255, 0.15);
+    margin-bottom: 2rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 .hero-banner img { width: 100%; height: 200px; object-fit: cover; display: block; }
 .hero-overlay {
     position: absolute; bottom: 0; left: 0; right: 0;
     padding: 1.5rem 2rem;
-    background: linear-gradient(transparent, rgba(10, 14, 39, 0.95));
+    background: linear-gradient(transparent, rgba(28, 30, 34, 0.95));
 }
 .hero-overlay h1 {
     font-size: 1.8rem; font-weight: 700; color: #ffffff;
     margin: 0 0 0.25rem 0; text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 .hero-overlay p {
-    font-size: 0.95rem; color: rgba(200, 210, 255, 0.85);
+    font-size: 0.95rem; color: rgba(220, 213, 203, 0.85);
     margin: 0; font-weight: 300;
 }
 
 .content-card {
-    background: linear-gradient(135deg, rgba(20, 25, 60, 0.6) 0%, rgba(30, 20, 60, 0.4) 100%);
-    border: 1px solid rgba(100, 120, 255, 0.12); border-radius: 12px;
+    background: linear-gradient(135deg, rgba(36, 38, 43, 0.8) 0%, rgba(30, 32, 36, 0.6) 100%);
+    border: 1px solid rgba(212, 160, 84, 0.1); border-radius: 12px;
     padding: 2rem; margin-bottom: 1.5rem; backdrop-filter: blur(10px);
 }
 .question-card {
-    background: rgba(15, 20, 50, 0.5);
-    border: 1px solid rgba(100, 120, 255, 0.1); border-radius: 10px;
+    background: rgba(28, 30, 34, 0.6);
+    border: 1px solid rgba(212, 160, 84, 0.08); border-radius: 10px;
     padding: 1.5rem; margin-bottom: 1.2rem;
 }
 
@@ -194,27 +228,27 @@ section[data-testid="stSidebar"] .stMarkdown h3 {
     font-weight: 500; margin-bottom: 0.4rem; width: 100%;
 }
 .stage-done {
-    background: rgba(80, 200, 120, 0.15); color: #50c878;
-    border: 1px solid rgba(80, 200, 120, 0.25);
+    background: rgba(80, 200, 120, 0.12); color: #50c878;
+    border: 1px solid rgba(80, 200, 120, 0.2);
 }
 .stage-active {
-    background: rgba(100, 130, 255, 0.2); color: #8fa4ff;
-    border: 1px solid rgba(100, 130, 255, 0.4);
-    box-shadow: 0 0 12px rgba(100, 130, 255, 0.15);
+    background: rgba(212, 160, 84, 0.18); color: #e0b86a;
+    border: 1px solid rgba(212, 160, 84, 0.35);
+    box-shadow: 0 0 12px rgba(212, 160, 84, 0.12);
 }
 .stage-locked {
-    background: rgba(60, 60, 80, 0.3); color: rgba(150, 150, 180, 0.5);
-    border: 1px solid rgba(100, 100, 130, 0.15);
+    background: rgba(60, 58, 55, 0.3); color: rgba(160, 155, 145, 0.45);
+    border: 1px solid rgba(100, 95, 85, 0.15);
 }
 
 .xp-display {
     text-align: center; padding: 1.2rem; margin-top: 1rem;
-    background: linear-gradient(135deg, rgba(255, 180, 50, 0.1) 0%, rgba(255, 120, 50, 0.08) 100%);
-    border: 1px solid rgba(255, 180, 50, 0.2); border-radius: 12px;
+    background: linear-gradient(135deg, rgba(212, 160, 84, 0.08) 0%, rgba(212, 160, 84, 0.04) 100%);
+    border: 1px solid rgba(212, 160, 84, 0.15); border-radius: 12px;
 }
-.xp-number { font-size: 2.5rem; font-weight: 700; color: #ffb432; line-height: 1; }
+.xp-number { font-size: 2.5rem; font-weight: 700; color: #d4a054; line-height: 1; }
 .xp-label {
-    font-size: 0.75rem; font-weight: 600; color: rgba(255, 180, 50, 0.7);
+    font-size: 0.75rem; font-weight: 600; color: rgba(212, 160, 84, 0.6);
     text-transform: uppercase; letter-spacing: 0.1em;
 }
 
@@ -222,74 +256,87 @@ section[data-testid="stSidebar"] .stMarkdown h3 {
 .section-icon {
     font-size: 2rem; width: 3rem; height: 3rem;
     display: flex; align-items: center; justify-content: center;
-    border-radius: 10px; background: rgba(100, 130, 255, 0.12);
+    border-radius: 10px; background: rgba(212, 160, 84, 0.1);
 }
-.section-title { font-size: 1.4rem; font-weight: 600; color: #e0e4ff; margin: 0; }
-.section-subtitle { font-size: 0.85rem; color: rgba(180, 190, 220, 0.7); margin: 0; }
+.section-title { font-size: 1.4rem; font-weight: 600; color: #dcd5cb; margin: 0; }
+.section-subtitle { font-size: 0.85rem; color: rgba(197, 192, 184, 0.6); margin: 0; }
 
 .paper-meta { display: flex; gap: 1rem; margin: 0.75rem 0 1.5rem 0; flex-wrap: wrap; }
 .meta-tag {
     font-size: 0.78rem; padding: 0.3rem 0.75rem; border-radius: 6px;
-    background: rgba(100, 130, 255, 0.1); color: rgba(180, 195, 255, 0.8);
-    border: 1px solid rgba(100, 130, 255, 0.15);
+    background: rgba(212, 160, 84, 0.08); color: rgba(220, 213, 203, 0.75);
+    border: 1px solid rgba(212, 160, 84, 0.12);
 }
 
 .completion-card {
     text-align: center;
-    background: linear-gradient(135deg, rgba(80, 200, 120, 0.08) 0%, rgba(100, 130, 255, 0.08) 100%);
-    border: 1px solid rgba(80, 200, 120, 0.2); border-radius: 16px; padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(80, 200, 120, 0.06) 0%, rgba(212, 160, 84, 0.06) 100%);
+    border: 1px solid rgba(80, 200, 120, 0.18); border-radius: 16px; padding: 3rem 2rem;
 }
 .completion-icon { font-size: 4rem; margin-bottom: 1rem; }
 
 .stProgress > div > div {
-    background: linear-gradient(90deg, #6482ff, #a855f7) !important; border-radius: 10px;
+    background: linear-gradient(90deg, #b8842e, #d4a054) !important; border-radius: 10px;
 }
-.stProgress > div { background: rgba(100, 130, 255, 0.1) !important; border-radius: 10px; }
+.stProgress > div { background: rgba(212, 160, 84, 0.1) !important; border-radius: 10px; }
 
 .stButton > button[kind="primary"] {
-    background: linear-gradient(135deg, #6482ff 0%, #a855f7 100%) !important;
+    background: linear-gradient(135deg, #b8842e 0%, #d4a054 100%) !important;
     border: none !important; border-radius: 8px !important; font-weight: 600 !important;
     padding: 0.6rem 1.5rem !important; transition: all 0.2s ease !important;
-    box-shadow: 0 4px 15px rgba(100, 130, 255, 0.25) !important;
+    box-shadow: 0 4px 15px rgba(212, 160, 84, 0.2) !important;
+    color: #fff !important;
 }
 .stButton > button[kind="primary"]:hover {
     transform: translateY(-1px) !important;
-    box-shadow: 0 6px 20px rgba(100, 130, 255, 0.35) !important;
+    box-shadow: 0 6px 20px rgba(212, 160, 84, 0.3) !important;
 }
 .stButton > button[kind="secondary"] {
-    border: 1px solid rgba(100, 130, 255, 0.3) !important; border-radius: 8px !important;
-    font-weight: 500 !important; color: #8fa4ff !important;
+    border: 1px solid rgba(212, 160, 84, 0.25) !important; border-radius: 8px !important;
+    font-weight: 500 !important; color: #d4a054 !important;
 }
 
 .stRadio > div { gap: 0.3rem !important; }
 
 .stTextArea textarea {
-    border: 1px solid rgba(100, 130, 255, 0.2) !important; border-radius: 8px !important;
-    background: rgba(15, 20, 50, 0.5) !important;
+    border: 1px solid rgba(212, 160, 84, 0.15) !important; border-radius: 8px !important;
+    background: rgba(28, 30, 34, 0.6) !important;
 }
 .stTextArea textarea:focus {
-    border-color: rgba(100, 130, 255, 0.5) !important;
-    box-shadow: 0 0 0 2px rgba(100, 130, 255, 0.1) !important;
+    border-color: rgba(212, 160, 84, 0.4) !important;
+    box-shadow: 0 0 0 2px rgba(212, 160, 84, 0.08) !important;
 }
 
 .sidebar-brand {
     text-align: center; padding: 0.5rem 0 1.5rem 0;
-    border-bottom: 1px solid rgba(100, 120, 255, 0.15); margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(212, 160, 84, 0.12); margin-bottom: 1.5rem;
 }
 .sidebar-brand h2 {
     font-size: 1.3rem; font-weight: 700;
-    background: linear-gradient(135deg, #8fa4ff, #c084fc);
+    background: linear-gradient(135deg, #d4a054, #e0c08a);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;
 }
 .sidebar-brand p {
-    font-size: 0.75rem; color: rgba(180, 190, 220, 0.5); margin: 0.25rem 0 0 0;
+    font-size: 0.75rem; color: rgba(197, 192, 184, 0.45); margin: 0.25rem 0 0 0;
 }
 
 .login-card {
     max-width: 400px; margin: 4rem auto; padding: 2.5rem;
-    background: linear-gradient(135deg, rgba(20, 25, 60, 0.8) 0%, rgba(30, 20, 60, 0.6) 100%);
-    border: 1px solid rgba(100, 120, 255, 0.2); border-radius: 16px;
+    background: linear-gradient(135deg, rgba(36, 38, 43, 0.9) 0%, rgba(30, 32, 36, 0.7) 100%);
+    border: 1px solid rgba(212, 160, 84, 0.15); border-radius: 16px;
     backdrop-filter: blur(10px); text-align: center;
+}
+
+.glossary-entry {
+    display: flex; flex-direction: column; gap: 0.2rem;
+    padding: 0.6rem 0; border-bottom: 1px solid rgba(212, 160, 84, 0.08);
+}
+.glossary-entry:last-child { border-bottom: none; }
+.glossary-term {
+    font-weight: 600; font-size: 0.9rem; color: #d4a054;
+}
+.glossary-def {
+    font-size: 0.85rem; color: rgba(197, 192, 184, 0.8); line-height: 1.4;
 }
 </style>
 """
@@ -344,7 +391,7 @@ def _advance_stage(new_stage: int):
 
 
 def _progress_fraction() -> float:
-    return st.session_state.stage / 5
+    return st.session_state.stage / 6
 
 
 def _img_to_base64(path: Path) -> str:
@@ -556,7 +603,7 @@ def _render_login():
             f'<div class="hero-banner">'
             f'<img src="data:image/jpeg;base64,{img_b64}" alt="banner">'
             f'<div class="hero-overlay"><h1>Paper Quest</h1>'
-            f'<p>Neuroscience Module</p></div></div>',
+            f'<p>PY3CNE</p></div></div>',
             unsafe_allow_html=True,
         )
 
@@ -599,7 +646,7 @@ def _render_sidebar(week):
     with st.sidebar:
         st.markdown(
             '<div class="sidebar-brand"><h2>Paper Quest</h2>'
-            '<p>Neuroscience Module</p></div>',
+            '<p>PY3CNE</p></div>',
             unsafe_allow_html=True,
         )
 
@@ -635,9 +682,10 @@ def _render_sidebar(week):
         st.progress(_progress_fraction())
 
         stage_config = [
-            ("Podcast", "\U0001f3a7"),
+            ("Intro Paper 1", "\U0001f3a7"),
             ("Read Paper 1", "\U0001f4d6"),
             ("Paper 1 Questions", "\U0001f4dd"),
+            ("Intro Paper 2", "\U0001f3a7"),
             ("Read Paper 2", "\U0001f4d6"),
             ("Paper 2 Questions", "\U0001f4dd"),
             ("Complete", "✅"),
@@ -663,37 +711,72 @@ def _render_sidebar(week):
         )
 
 
-def _render_podcast(week):
+import re as _re
+
+
+def _extract_drive_id(url: str) -> str | None:
+    m = _re.search(r"/d/([a-zA-Z0-9_-]+)", url)
+    return m.group(1) if m else None
+
+
+def _render_transcript(transcript: str, images: list):
+    if not images:
+        st.markdown(transcript)
+        return
+    image_map = {img["after_paragraph"]: img for img in images}
+    paragraphs = [p for p in transcript.split("\n\n") if p.strip()]
+    for i, para in enumerate(paragraphs):
+        st.markdown(para)
+        if i in image_map:
+            img = image_map[i]
+            st.image(img["url"], caption=img.get("caption", ""))
+
+
+def _render_podcast(week, paper_index: int, next_stage: int):
+    paper = week["papers"][paper_index]
+    wk = week["week_number"]
+
     _render_hero(week)
 
     st.markdown(
-        '<div class="section-header"><div class="section-icon">\U0001f3a7</div>'
-        '<div><p class="section-title">Listen to the Podcast</p>'
-        '<p class="section-subtitle">An introduction to this week\'s two papers</p>'
-        '</div></div>',
+        f'<div class="section-header"><div class="section-icon">\U0001f3a7</div>'
+        f'<div><p class="section-title">Paper {paper_index + 1} Introduction</p>'
+        f'<p class="section-subtitle">{paper["title"]}</p>'
+        f'</div></div>',
         unsafe_allow_html=True,
     )
 
-    podcast_cfg = week.get("podcast", {})
-    embed_url = podcast_cfg.get("embed_url")
+    st.markdown(
+        "Listen to a short audio introduction using the play button below. "
+        "If you'd prefer to read along, you can expand the transcript underneath the player."
+    )
 
-    st.markdown('<div class="content-card">', unsafe_allow_html=True)
-    if embed_url:
+    podcast_url = paper.get("podcast_url", "")
+
+    if podcast_url:
         components.html(
-            f'<iframe src="{embed_url}" width="100%" height="80" '
-            f'allow="autoplay" style="border:none; border-radius:8px;"></iframe>',
-            height=100,
+            f'''<div style="position:relative;width:100%;height:160px;overflow:hidden;
+                            border-radius:8px;background:#1a1c20;">
+              <iframe src="{podcast_url}" width="100%" height="400"
+                      allow="autoplay"
+                      style="border:none;position:absolute;top:-120px;left:0;
+                             width:100%;height:400px;"></iframe>
+            </div>''',
+            height=168,
         )
     else:
-        st.warning("Podcast not available.")
-    st.markdown("</div>", unsafe_allow_html=True)
+        st.warning("Audio introduction not yet available.")
+
+    transcript = paper.get("podcast_transcript")
+    if transcript:
+        with st.expander("\U0001f4dc Read the transcript"):
+            _render_transcript(transcript, paper.get("podcast_images", []))
 
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        wk = week["week_number"]
         if st.button("I've listened — continue ▶️", type="primary", use_container_width=True):
-            _award_xp(10, f"w{wk}_podcast")
-            _advance_stage(1)
+            _award_xp(10, f"w{wk}_podcast_p{paper_index}")
+            _advance_stage(next_stage)
             st.rerun()
 
 
@@ -707,6 +790,12 @@ def _render_read_paper(week, paper_index: int, next_stage: int):
         f'<p class="section-subtitle">Take your time — the questions come next</p>'
         f'</div></div>',
         unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        "Read through the paper at your own pace using the embedded viewer below. "
+        "A **key terms glossary** is provided underneath to help with unfamiliar terminology. "
+        "When you're done reading, you can also explore an interactive **citation network** to see how the paper connects to the wider literature."
     )
 
     st.markdown(f"**{paper['title']}**")
@@ -727,6 +816,17 @@ def _render_read_paper(week, paper_index: int, next_stage: int):
     else:
         st.warning("No embedded viewer available for this paper.")
 
+    glossary = paper.get("glossary", [])
+    if glossary:
+        with st.expander("\U0001f4d6 Key terms glossary"):
+            for entry in glossary:
+                st.markdown(
+                    f'<div class="glossary-entry">'
+                    f'<span class="glossary-term">{entry["term"]}</span>'
+                    f'<span class="glossary-def">{entry["definition"]}</span></div>',
+                    unsafe_allow_html=True,
+                )
+
     with st.expander("\U0001f52c Explore the citation network"):
         _render_citation_network(paper)
 
@@ -742,12 +842,23 @@ def _render_paper_questions(week, paper_index: int):
     paper = week["papers"][paper_index]
     wk = week["week_number"]
 
+    components.html(
+        '<script>window.parent.document.querySelector("section.main").scrollTo(0, 0);</script>',
+        height=0,
+    )
+
     st.markdown(
         f'<div class="section-header"><div class="section-icon">\U0001f4dd</div>'
         f'<div><p class="section-title">Paper {paper_index + 1} — Comprehension</p>'
         f'<p class="section-subtitle">{paper["authors"]} · {paper.get("journal", "")}</p>'
         f'</div></div>',
         unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        "Below you'll find a few multiple-choice questions to check your understanding, "
+        "followed by a short-answer section where you can compare your thinking against a model answer. "
+        "At the end, you'll be asked to rate how easy you found the paper and flag anything you'd like more detail on."
     )
 
     st.markdown("#### Multiple Choice")
@@ -775,7 +886,6 @@ def _render_paper_questions(week, paper_index: int):
 
     st.markdown("---")
     st.markdown("#### Short Answer")
-    sa_complete = True
     for i, sa in enumerate(paper.get("short_answers", [])):
         sa_key = f"w{wk}_sa_p{paper_index}_q{i}"
         st.markdown('<div class="question-card">', unsafe_allow_html=True)
@@ -785,38 +895,50 @@ def _render_paper_questions(week, paper_index: int):
         if sa_key not in st.session_state.sa_revealed:
             if st.button("Reveal model answer", key=f"rev_{sa_key}"):
                 st.session_state.sa_revealed.add(sa_key)
+                _award_xp(10, sa_key)
                 st.rerun()
         else:
             st.info(f"**Model answer:** {sa['model_answer']}")
-            col1, col2, _ = st.columns([1, 1, 2])
-            with col1:
-                if st.button("Got it ✓", key=f"got_{sa_key}", type="primary"):
-                    st.session_state.sa_self_marks[sa_key] = True
-                    _award_xp(10, sa_key)
-                    st.rerun()
-            with col2:
-                if st.button("Missed it ✗", key=f"miss_{sa_key}"):
-                    st.session_state.sa_self_marks[sa_key] = False
-                    st.rerun()
-            if sa_key in st.session_state.sa_self_marks:
-                if st.session_state.sa_self_marks[sa_key]:
-                    st.success("Nice work! +10 XP")
-                else:
-                    st.warning("No worries — review and try again next time.")
-
-        if sa_key not in st.session_state.sa_self_marks:
-            sa_complete = False
         st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("---")
+    st.markdown("#### Paper Feedback")
+    st.markdown('<div class="question-card">', unsafe_allow_html=True)
+    difficulty_key = f"w{wk}_diff_p{paper_index}"
+    difficulty = st.slider(
+        "How easy did you find this paper to understand?",
+        min_value=1, max_value=5,
+        value=st.session_state.get(difficulty_key, 3),
+        format="%d",
+        help="1 = Very difficult, 5 = Very easy",
+        key=f"slider_{difficulty_key}",
+    )
+    st.session_state[difficulty_key] = difficulty
+    st.caption("1 = Very difficult · 2 = Difficult · 3 = Moderate · 4 = Easy · 5 = Very easy")
 
-    all_done = mcq_complete and sa_complete
+    feedback_key = f"w{wk}_fb_p{paper_index}"
+    feedback_text = st.text_area(
+        "Is there anything you found confusing or would like more detail on?",
+        key=f"ta_fb_{feedback_key}",
+        height=100,
+        placeholder="e.g. I didn't fully understand the fMRI methodology...",
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    all_done = mcq_complete
     if all_done:
         next_stage = st.session_state.stage + 1
-        label = "Continue to Paper 2 ▶️" if paper_index == 0 else "Complete week \U0001f389"
+        label = "Continue to Paper 2 intro ▶️" if paper_index == 0 else "Complete week \U0001f389"
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             if st.button(label, type="primary", use_container_width=True):
+                if _sheets_available():
+                    _save_paper_feedback(
+                        st.session_state.username, wk, paper_index,
+                        difficulty, feedback_text or "",
+                    )
                 _advance_stage(next_stage)
                 st.rerun()
     else:
@@ -868,16 +990,18 @@ def main():
 
     stage = st.session_state.stage
     if stage == 0:
-        _render_podcast(week)
+        _render_podcast(week, paper_index=0, next_stage=1)
     elif stage == 1:
         _render_read_paper(week, paper_index=0, next_stage=2)
     elif stage == 2:
         _render_paper_questions(week, paper_index=0)
     elif stage == 3:
-        _render_read_paper(week, paper_index=1, next_stage=4)
+        _render_podcast(week, paper_index=1, next_stage=4)
     elif stage == 4:
+        _render_read_paper(week, paper_index=1, next_stage=5)
+    elif stage == 5:
         _render_paper_questions(week, paper_index=1)
-    elif stage >= 5:
+    elif stage >= 6:
         _render_complete(week)
 
 

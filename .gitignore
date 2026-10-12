@@ -3,3 +3,9 @@ __pycache__/
 *.pyc
 .env
 .streamlit/secrets.toml
+podcasts/*.mp3
+podcasts/*.wav
+podcasts/*.m4a
+podcasts/*.txt
+.pixi/
+pixi.lock
