@@ -5,7 +5,6 @@ import base64
 import requests
 import yaml
 from pathlib import Path
-from streamlit_agraph import agraph, Node, Edge, Config
 
 BASE = Path(__file__).parent
 WEEKS_DIR = BASE / "weeks"
@@ -475,84 +474,94 @@ def _render_citation_network(paper: dict):
             st.error("Could not fetch citation data. Please try again later.")
             return
 
-    nodes, edges, node_lookup = [], [], {}
+    vis_nodes = []
+    vis_edges = []
+    node_lookup = {}
     cx, cy, radius = 350, 250, 180
 
     node_lookup[openalex_id] = center
-    nodes.append(Node(
-        id=openalex_id, label=_short_label(center),
-        title=center.get("title", ""), size=35, color="#a855f7",
-        font={"color": "#e0e4ff", "size": 11, "strokeWidth": 3, "strokeColor": "#0a0e27"},
-        shape="dot", x=cx, y=cy,
-    ))
+    vis_nodes.append({
+        "id": openalex_id, "label": _short_label(center),
+        "title": center.get("title", ""), "size": 35, "color": "#a855f7",
+        "font": {"color": "#e0e4ff", "size": 11, "strokeWidth": 3, "strokeColor": "#0a0e27"},
+        "shape": "dot", "x": cx, "y": cy,
+    })
 
     n_citing = len(citing)
     for i, work in enumerate(citing):
         wid = work["id"].split("/")[-1]
         node_lookup[wid] = work
         angle = math.pi + (math.pi / (n_citing + 1)) * (i + 1)
-        nodes.append(Node(
-            id=wid, label=_short_label(work), title=work.get("title", ""),
-            size=20, color="#6482ff",
-            font={"color": "#8fa4ff", "size": 9, "strokeWidth": 2, "strokeColor": "#0a0e27"},
-            shape="dot",
-            x=int(cx + radius * math.cos(angle)), y=int(cy + radius * math.sin(angle)),
-        ))
-        edges.append(Edge(source=wid, target=openalex_id, color="rgba(100,130,255,0.4)", width=1.5))
+        vis_nodes.append({
+            "id": wid, "label": _short_label(work), "title": work.get("title", ""),
+            "size": 20, "color": "#6482ff",
+            "font": {"color": "#8fa4ff", "size": 9, "strokeWidth": 2, "strokeColor": "#0a0e27"},
+            "shape": "dot",
+            "x": int(cx + radius * math.cos(angle)), "y": int(cy + radius * math.sin(angle)),
+        })
+        vis_edges.append({"from": wid, "to": openalex_id, "color": {"color": "rgba(100,130,255,0.4)"}, "width": 1.5, "arrows": "to"})
 
     ref_idx = 0
     n_refs = len(refs)
     for work in refs:
         wid = work["id"].split("/")[-1]
         node_lookup[wid] = work
-        if not any(n.id == wid for n in nodes):
+        if not any(n["id"] == wid for n in vis_nodes):
             angle = (math.pi / (n_refs + 1)) * (ref_idx + 1)
-            nodes.append(Node(
-                id=wid, label=_short_label(work), title=work.get("title", ""),
-                size=20, color="#50c878",
-                font={"color": "#50c878", "size": 9, "strokeWidth": 2, "strokeColor": "#0a0e27"},
-                shape="dot",
-                x=int(cx + radius * math.cos(angle)), y=int(cy + radius * math.sin(angle)),
-            ))
+            vis_nodes.append({
+                "id": wid, "label": _short_label(work), "title": work.get("title", ""),
+                "size": 20, "color": "#50c878",
+                "font": {"color": "#50c878", "size": 9, "strokeWidth": 2, "strokeColor": "#0a0e27"},
+                "shape": "dot",
+                "x": int(cx + radius * math.cos(angle)), "y": int(cy + radius * math.sin(angle)),
+            })
             ref_idx += 1
-        edges.append(Edge(source=openalex_id, target=wid, color="rgba(80,200,120,0.4)", width=1.5))
-
-    config = Config(
-        width=700, height=500, directed=True, physics=False, hierarchical=False,
-        nodeHighlightBehavior=True, highlightColor="#ffb432", collapsible=False,
-        node={"labelProperty": "label"}, link={"renderLabel": False},
-        backgroundColor="rgba(0,0,0,0)",
-    )
+        vis_edges.append({"from": openalex_id, "to": wid, "color": {"color": "rgba(80,200,120,0.4)"}, "width": 1.5, "arrows": "to"})
 
     st.markdown(
         '<p style="font-size:0.8rem; color:rgba(180,190,220,0.6);">'
         '<span style="color:#a855f7;">●</span> This paper &nbsp; '
         '<span style="color:#6482ff;">●</span> Cited by &nbsp; '
         '<span style="color:#50c878;">●</span> References &nbsp; '
-        '<span style="font-style:italic;">Click a node to see details</span></p>',
+        '<br><span style="font-style:italic; font-size:0.75rem;">Tip: right-click a node and choose "Open in new tab" to view the paper.</span>'
+        '</p>',
         unsafe_allow_html=True,
     )
 
-    selected_node = agraph(nodes=nodes, edges=edges, config=config)
-
-    if selected_node and selected_node in node_lookup:
-        work = node_lookup[selected_node]
+    svg_w, svg_h = 700, 500
+    svg_lines = [f'<svg viewBox="0 0 {svg_w} {svg_h}" xmlns="http://www.w3.org/2000/svg" '
+                 f'style="width:100%;background:transparent;">']
+    for e in vis_edges:
+        src = next((n for n in vis_nodes if n["id"] == e["from"]), None)
+        tgt = next((n for n in vis_nodes if n["id"] == e["to"]), None)
+        if src and tgt:
+            svg_lines.append(f'<line x1="{src["x"]}" y1="{src["y"]}" x2="{tgt["x"]}" y2="{tgt["y"]}" '
+                             f'stroke="{e["color"]["color"]}" stroke-width="1.5"/>')
+    for n in vis_nodes:
+        r = n["size"] // 2
+        work = node_lookup.get(n["id"], {})
         doi_link = _doi_url(work)
-        title = work.get("title", "Untitled") or "Untitled"
+        title_attr = (work.get("title") or "").replace('"', '&quot;').replace("'", "&#39;").replace('<', '&lt;')
         author = _first_author(work)
-        year = work.get("publication_year", "—")
-        cites = work.get("cited_by_count", 0)
-        st.markdown(
-            f'<div style="padding:1rem; margin:0.5rem 0; border-radius:8px; '
-            f'background:rgba(100,130,255,0.08); border:1px solid rgba(100,130,255,0.2);">'
-            f'<strong style="color:#e0e4ff;">{title}</strong><br>'
-            f'<span style="font-size:0.85rem; color:rgba(180,190,220,0.7);">'
-            f'{author} · {year} · {cites} citations</span><br>',
-            unsafe_allow_html=True,
-        )
+        year = work.get("publication_year", "")
+        tooltip = f"{title_attr}&#10;{author} · {year}" if author else title_attr
         if doi_link:
-            st.markdown(f"[Open paper ↗]({doi_link})")
-        st.markdown("</div>", unsafe_allow_html=True)
+            svg_lines.append(f'<a href="{doi_link}" target="_blank" rel="noopener">')
+        svg_lines.append(f'<circle cx="{n["x"]}" cy="{n["y"]}" r="{r}" fill="{n["color"]}" '
+                         f'style="cursor:pointer;" opacity="0.9">'
+                         f'<title>{tooltip}</title></circle>')
+        label = n["label"]
+        font_color = n["font"]["color"]
+        svg_lines.append(f'<text x="{n["x"]}" y="{n["y"] + r + 12}" '
+                         f'text-anchor="middle" fill="{font_color}" '
+                         f'font-size="9" font-family="sans-serif" pointer-events="none">{label}</text>')
+        if doi_link:
+            svg_lines.append('</a>')
+    svg_lines.append('</svg>')
+    graph_html = f'''<!DOCTYPE html>
+<html><head><style>html,body{{margin:0;padding:0;overflow:hidden;background:transparent;}}</style></head>
+<body>{chr(10).join(svg_lines)}</body></html>'''
+    components.html(graph_html, height=520)
 
     def _render_paper_list(works):
         works_sorted = sorted(works, key=lambda w: w.get("cited_by_count", 0), reverse=True)
