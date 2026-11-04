@@ -9,17 +9,27 @@ papers:
     doi: "10.1001/archgenpsychiatry.2010.144"
     openalex_id: "W2060926272"
     embed_url: "https://drive.google.com/file/d/1d4II76m7SSc63fCYRJX0AFkew01plAGe/preview"
-    podcast_url: ""
+    podcast_url: "https://drive.google.com/file/d/1SWt8ckt_nt07jacvvzOvAWuRfcl3bGuF/preview"
+    podcast_images:
+      - after_paragraph: 2
+        url: "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/8f8d/5440466/b434febb99b4/fnhum-11-00256-g0001.jpg"
+        caption: "Example of a backward masking paradigm."
+      - after_paragraph: 4
+        url: "https://images.squarespace-cdn.com/content/v1/64aa25ba0f9b2a46585e0148/1740078066001-2R02LVGGQGYUIOPZ6ZAT/Mechanism+of+Action+of+Selective+Serotonin+Reuptake+Inhibitors.jpg"
+        caption: "Action of an SSRI, such as sertraline, at the synapse. SSRIs block the reuptake of serotonin into the presynaptic neuron, increasing serotonin availability in the synaptic cleft."
+
     podcast_transcript: |
-      This week we're getting into brain plasticity and neuromodulation. Our first paper is from Victor and colleagues, 2007, and it connects genetics to how plastic your brain is.
+      This week we're looking at mood, depression, and emotional processing. Our first paper is from Victor, Furey, Fromm, Öhman, and Drevets, published in Archives of General Psychiatry in 2010. And it asks a really fundamental question about depression: is there something automatically different about how a depressed brain processes emotional information — even when the person isn't aware of it?
 
-      Brain-derived neurotrophic factor — BDNF — is one of the most important molecules for synaptic plasticity. It's involved in long-term potentiation, synapse strengthening, and learning. There's a well-known genetic variant in the BDNF gene called the Val66Met polymorphism — some people carry a valine at position 66, others carry a methionine. About a third of the population carries at least one Met allele. Previous work had suggested that the Met variant is associated with reduced activity-dependent secretion of BDNF, which could mean less efficient plasticity.
+      So here's the design. They used a backward-masking paradigm. A face showing an emotion — sad, happy, or neutral — was flashed for just 26 milliseconds, then immediately covered by a neutral face shown for 107 milliseconds. That's fast enough that participants couldn't consciously see the emotional face at all — detection was at chance, and nobody reported seeing two faces. While this was happening, participants lay in a 3-Tesla fMRI scanner, and the researchers measured amygdala responses to these unseen emotional faces.
 
-      What Victor's team did was use repetitive transcranial magnetic stimulation — rTMS — to probe cortical plasticity directly in humans with different BDNF genotypes. They applied rTMS protocols known to induce short-term plasticity in motor cortex and measured the effects using motor evoked potentials.
+      They tested three groups: 22 currently depressed, unmedicated patients; 16 people who had previously been depressed but were now in remission, also unmedicated; and 25 healthy controls. And what they found was a striking double dissociation. The currently depressed group showed significantly greater amygdala activation to masked sad faces compared with healthy controls. But the healthy controls showed the opposite — greater amygdala activation to masked happy faces. So it's not that depression makes the amygdala generally overactive. It's that depression shifts the amygdala's automatic tuning — toward negative information and away from positive information, all below the threshold of conscious awareness.
 
-      The key finding was that individuals with the Val/Val genotype showed robust plasticity responses to rTMS, while Met carriers showed significantly reduced responses. In other words, a single genetic variation predicted how much the brain's excitability could be shifted by external stimulation.
+      Now here's the really important finding. The remitted group — people who had recovered from depression but weren't currently depressed — also showed this sad-face bias. Their amygdala responses looked more like the depressed group than the healthy controls. That suggests this isn't just a symptom of being depressed right now. It may be a trait marker — a vulnerability that persists even when someone feels better, potentially putting them at risk for relapse.
 
-      This has wide-reaching implications. If your BDNF genotype affects how plastic your cortex is, it could influence everything from how you respond to rehabilitation after a stroke, to how effective brain stimulation therapies are for depression. Should we be genotyping patients before prescribing rTMS? Does this variant affect learning and memory in everyday life? And more fundamentally, how much of the variation we see in people's ability to learn and adapt is baked into their genes versus shaped by experience?
+      The final part of the study followed ten of the depressed patients through eight weeks of treatment with sertraline, an SSRI. After treatment, the sad-face amygdala bias decreased and a happy-face bias emerged, shifting the pattern toward what healthy controls showed. Clinically, nine out of ten responded and seven achieved full remission.
+
+      So what does this tell us? It tells us that depression isn't just about conscious rumination or negative thinking. There's an automatic, pre-attentive bias in how the brain filters emotional information — and this bias operates below awareness. The amygdala is selectively amplifying threat-related social signals before you even know they're there. And the fact that SSRIs can reverse this pattern suggests that pharmacological treatment may work partly by recalibrating these early emotional filters, not just by changing how people consciously think about their problems. That's a genuinely different way of understanding what antidepressants do.
     glossary:
       - term: "Masked faces paradigm"
         definition: "An experimental technique where a face is briefly shown then immediately replaced by a neutral face, preventing conscious awareness of the first stimulus."
@@ -62,17 +72,29 @@ papers:
     doi: "10.1016/j.cub.2018.10.026"
     openalex_id: "W2903033387"
     embed_url: "https://drive.google.com/file/d/1nKnQ-26GoYT8gLRlNFbJPRZzyjqMnKjV/preview"
-    podcast_url: ""
+    podcast_url: "https://drive.google.com/file/d/1dhqjeI4YBXGgl3NpkHgjoeJ-bYkyTEvK/preview"
+    podcast_images:
+      - after_paragraph: 2
+        url: "https://d38sso7f6qz01j.cloudfront.net/original_images/DBS-graphic_for_MedBLog.jpg"
+        caption: "Deep brain stimulation (DBS) involves implanting electrodes into specific brain regions to modulate neural activity. In this study, DBS was applied to the lateral orbitofrontal cortex to assess its effects on mood in depressed patients."
+      - after_paragraph: 5
+        url: "https://www.diygenius.com/wp-content/uploads/2022/12/brainwave-frequencies-chart.jpg"
+        caption: "Brainwave frequency bands, including theta (4–8 Hz) and alpha (8–12 Hz), which were suppressed in the lateral orbitofrontal cortex during stimulation, correlating with improved mood."
+
     podcast_transcript: |
-      Our second paper this week shifts from plasticity to application. This is Rao and colleagues, 2018, and it's about neurofeedback as a potential intervention for autism.
+      Our second paper this week is from Rao and colleagues, published in Current Biology in 2018. And this one takes a completely different approach to depression — instead of measuring brain responses to emotions, they asked: what happens if you directly stimulate a mood-related brain region with electrical current?
 
-      Neurofeedback is a form of biofeedback where people learn to regulate their own brain activity in real time. You record someone's EEG, extract a feature of interest — say, the ratio between theta and beta power — and feed it back to them as a visual or auditory signal. Over repeated sessions, the person learns to shift their brain activity in the desired direction. It's essentially operant conditioning for brainwaves.
+      Now, the opportunity here came from epilepsy surgery. When patients with drug-resistant epilepsy are being evaluated for surgery, they often have electrodes implanted directly into the brain for a week or more so that clinicians can locate exactly where their seizures originate. During this monitoring period, with informed consent, researchers can also use those electrodes to deliver small electrical pulses to specific brain regions and observe the effects. It's a rare window into how direct stimulation of particular brain areas affects human experience in real time.
 
-      Rao and colleagues reviewed the evidence for using neurofeedback to address some of the core and associated features of autism — things like attention difficulties, social communication challenges, and executive function deficits. The rationale is straightforward: if autism is associated with atypical patterns of neural activity — which the EEG literature suggests it is — then perhaps training people to normalise those patterns could improve symptoms.
+      Rao's team studied 25 patients with these implanted electrodes. They targeted the lateral orbitofrontal cortex — a region on the underside of the frontal lobe that sits at a hub in the brain's mood-regulation circuitry. It has dense connections with the amygdala, the anterior cingulate, the ventral striatum, and other areas involved in emotional processing. They delivered stimulation at 100 hertz and measured mood using verbal reports during stimulation and validated questionnaires over the monitoring period.
 
-      The evidence they review is cautiously promising. Several studies report improvements in attention, behaviour, and social functioning following neurofeedback training, and some of these gains persisted at follow-up. But the field has significant methodological challenges — small sample sizes, lack of proper sham controls, and the question of whether any improvements are really due to the neurofeedback itself or to the attention and therapeutic relationship involved in sitting with a clinician for twenty sessions.
+      What they found was remarkable. Unilateral stimulation of the lateral OFC produced acute, dose-dependent mood improvement — but only in patients who had moderate-to-severe depression symptoms at baseline. Patients who weren't particularly depressed showed no mood change. This selectivity is actually very encouraging from a clinical perspective, because it means the stimulation wasn't just artificially inducing euphoria in everyone. It was specifically restoring mood in those whose mood was impaired.
 
-      As you read this, think critically about the assumptions underlying the approach. Is "normalising" atypical brain activity a valid therapeutic goal? Who decides what the target pattern should be? And how do we disentangle the specific effects of neurofeedback from the non-specific effects of simply spending structured time with a supportive adult? These are important questions not just for neurofeedback, but for any intervention approach in neurodevelopmental conditions.
+      At the neural level, stimulation suppressed low-frequency activity — theta and alpha band power — in the OFC. And here's the elegant part: the team had also been tracking natural fluctuations in mood across the monitoring period, and they found that naturally occurring good mood was associated with exactly the same pattern — reduced low-frequency OFC activity. So the stimulation was mimicking the brain's own signature of positive mood, not creating some artificial state. It also modulated activity in distributed mood-related structures, suggesting the OFC was acting as a gateway into a broader network.
+
+      Critically, none of the patients developed hypomania — that abnormally elevated mood state that's a real concern with any intervention targeting mood circuits. The stimulation seemed to bring people back to a normal emotional baseline rather than pushing them past it.
+
+      So why does this matter? Deep brain stimulation for depression has been tried before, targeting regions like the subgenual cingulate, but results have been mixed. This study suggests the lateral OFC may be a more promising target — it produced reliable, dose-dependent improvement specifically in depressed individuals, the effects mimicked natural positive mood states, and there was no overcorrection. Of course, these were acute effects during a brief monitoring period, and we don't yet know whether chronic stimulation would maintain these benefits. But it opens up a genuinely exciting direction for treatment-resistant depression, and it tells us something fundamental about how the brain generates and regulates mood — that a single node in a distributed circuit can shift the whole system toward or away from a depressive state.
     glossary:
       - term: "Lateral orbitofrontal cortex"
         definition: "A region on the underside of the frontal lobe involved in emotion regulation, reward evaluation, and decision-making."
