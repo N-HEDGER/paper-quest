@@ -154,10 +154,7 @@ def _week_is_unlocked(week_idx: int) -> bool:
     wn = WEEK_NUMBERS[week_idx]
     if MAX_WEEK is not None and wn > MAX_WEEK:
         return False
-    if week_idx == 0:
-        return True
-    prev_wn = WEEK_NUMBERS[week_idx - 1]
-    return st.session_state.get(f"week_{prev_wn}_stage", 0) >= 6
+    return True
 
 
 def _sheets_available() -> bool:
